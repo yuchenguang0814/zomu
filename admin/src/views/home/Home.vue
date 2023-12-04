@@ -32,9 +32,6 @@ import { useStore } from "vuex";
 import { computed } from 'vue'
 const store = useStore();
 const avatarUrl = computed(() => store.state.userInfo.logo?store.state.userInfo.logo:`https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
-axios.get("/admin/home").then((res) => {
-  console.log(store.state);
-});
 </script>
 <style scoped>
 .box-card {

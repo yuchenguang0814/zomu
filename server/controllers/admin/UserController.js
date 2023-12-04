@@ -1,4 +1,5 @@
 const UserService = require("../../services/admin/UserService")
+
 const JWT = require('../../util/JWT')
 const UserController = {
   login: async (req, res) => {
@@ -15,6 +16,30 @@ const UserController = {
       res.send({
         data:result
       })  
+    }
+  },
+  edit: async (req, res) => {
+    const method = req.method;
+    const token = req.headers['authorization'].split(" ")[1]
+    var payload = JWT.verify(token)
+    if (method === "POST" && req.path === "/admin/user/edit") {
+      const result = await  UserService.edit({_id:payload._id,req})
+      res.send({
+        data:result
+      })  
+    }
+  },
+  editPass: async (req, res) => {
+    const method = req.method;
+    const token = req.headers['authorization'].split(" ")[1]
+    var payload = JWT.verify(token)
+    if (method === "POST" && req.path === "/admin/user/editPass") {
+      const result = await  UserService.editPass({_id:payload._id,req})
+      res.send({
+        data:{
+          result
+        }
+      })
     }
   }
 }

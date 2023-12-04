@@ -3,9 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
 var UserRouter = require('./routes/admin/UserRouter');
 const JWT = require('./util/JWT');
+
 
 var app = express();
 
@@ -27,7 +28,6 @@ app.use((req, res, next) => {
   const token = req.headers['authorization'].split(" ")[1]
   if(token) {
     var payload = JWT.verify(token)
-    console.log(payload)
     if(payload) {
       const newToken = JWT.generate({
         _id:payload._id,
@@ -41,7 +41,7 @@ app.use((req, res, next) => {
   }
 })
 
-app.use('/admin/users', usersRouter);
+// app.use('/admin/users', usersRouter);
 app.use(UserRouter)
 
 // catch 404 and forward to error handler

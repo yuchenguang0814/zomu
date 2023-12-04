@@ -36,18 +36,42 @@
                   <el-form-item label="QQ号码" prop="userQQ">
                     <el-input v-model="userForm.userQQ" />
                   </el-form-item>
-                  <el-form-item label="logo" prop="logo">
+                  <!-- <el-form-item label="logo" prop="logo">
                     <el-upload
                       class="avatar-uploader"
                       action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
                       :show-file-list="false"
                       :auto-upload="false"
+                      :on-change="handleChange"
                     >
                       <img v-if="userForm.logo" :src="userForm.logo" class="avatar" />
                       <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
                     </el-upload>
-                  </el-form-item>
-                
+                  </el-form-item> -->
+                  <el-button type="primary" @click="editUser()">修改用户信息</el-button>
+                  <el-button type="primary" @click="editPassworddialogVisible = true">修改密码</el-button>
+                  <!-- <el-button type="primary" @click="editlogodialogVisible = true">修改logo</el-button> -->
+                  <el-dialog v-model="editPassworddialogVisible" title="修改密码" width="30%" draggable>
+                    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleFormRef" label-width="120px">
+                      <el-form-item label="原始密码" prop="oldpass">
+                        <el-input v-model="ruleForm.oldpass" type="password" autocomplete="off" />
+                      </el-form-item>
+                      <el-form-item label="新密码" prop="pass">
+                        <el-input v-model="ruleForm.pass" type="password" autocomplete="off" />
+                      </el-form-item>
+                      <el-form-item label="确认密码" prop="checkPass">
+                        <el-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
+                      </el-form-item>
+                    </el-form>
+                    <template #footer>
+                      <span class="dialog-footer">
+                        <el-button @click="editPassworddialogVisible = false">取消</el-button>
+                        <el-button type="primary" @click="editPassword()">
+                          修改密码
+                        </el-button>
+                      </span>
+                    </template>
+                  </el-dialog>
                 </el-form>
             </div>
           </template>
@@ -58,20 +82,22 @@
 <script setup>
 import { useStore } from "vuex";
 import { computed, ref, reactive} from 'vue'
+import { ElDialog, ElMessage  } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
+import axios from "axios";
+
+const editPassworddialogVisible = ref(false)
 const store = useStore();
 const avatarUrl = computed(() => store.state.userInfo.logo ? store.state.userInfo.logo : `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
 const userFormRef = ref()
-const {username, name, userEmail, userPhone, userQQ, companyName, logo, companyAddress} = store.state.userInfo
+const {username, name, userEmail,password, userPhone, userQQ, companyName, logo, companyAddress} = store.state.userInfo
 const userForm = reactive({
   username,
-  name,
   userEmail,
   userPhone,
   userQQ,
   companyName,
-  logo,
-  companyAddress
+  companyAddress,
 })
 const userFormRules = reactive({
   username: [
@@ -89,24 +115,89 @@ const userFormRules = reactive({
   userQQ: [
     { required: true, message: '请输入QQ', trigger: 'blur' },
   ],
-  logo: [
-    { required: true, message: '请上传图片', trigger: 'blur' }
-  ],
   companyAddress: [
     { required: true, message: '请输入公司地址', trigger: 'blur' }
   ]
 })
+const ruleFormRef = ref()
+const ruleForm = reactive({
+  pass: '',
+  checkPass: '',
+  oldpass: ''
+})
+const validateoldpass = (rule, value, callback) => {
+  if (value === '') {
+    callback(new Error('请输入原密码'))
+  } else {
+    if (ruleForm.checkPass !== '') {
+      if (!ruleFormRef.value) return
+      ruleFormRef.value.validateField('checkPass', () => null)
+    }
+    callback()
+  }
+}
+const validatePass = (rule, value, callback) => {
+  if (value === '') {
+    callback(new Error('请输入密码'))
+  } else if (value === ruleForm.oldpass){
+    callback(new Error('新密码和原始密码一致'))
+  } else {
+    if (ruleForm.checkPass !== '') {
+      if (!ruleFormRef.value) return
+      ruleFormRef.value.validateField('checkPass', () => null)
+    }
+    callback()
+  }
+}
+const validatePass2 = (rule, value, callback) => {
+  if (value === '') {
+    callback(new Error('请再次输入密码'))
+  } else if (value !== ruleForm.pass) {
+    callback(new Error("两次输入密码不一致!"))
+  } else {
+    callback()
+  }
+}
+const rules = reactive({
+  oldpass: [{ validator: validateoldpass, trigger: 'blur' }],
+  pass: [{ validator: validatePass, trigger: 'blur' }],
+  checkPass: [{ validator: validatePass2, trigger: 'blur' }]
+}) 
+const editUser = ()=> {
+  userFormRef.value.validate((valid) => {
+    if (valid) {
+      axios.post('/admin/user/edit',userForm).then(res => {
+        const result = res.data.data.result
+        if (result.code !== 200) return ElMessage.error(result.message)
+        ElMessage.success(result.message)
+        store.commit('changeUserInfo',result.data)
+      })
+    }
+  })
+}
+const editPassword = ()=> {
+  ruleFormRef.value.validate((valid) => {
+    if(valid){
+      axios.post('/admin/user/editPass',ruleForm).then(res => {
+        const result = res.data.data
+        if (result.code !== 200) return ElMessage.error(result.message)
+        ElMessage.success(result.message)
+        store.commit('changeUserInfo',result.data)
+      })
+    }
+  })
+}
 </script>
 <style scoped>
 .el-row {
   margin-top: 50px;
 }
-::v-deep .avatar-uploader .avatar {
+:deep().avatar-uploader .avatar {
   width: 178px;
   height: 178px;
   display: block;
 }
-::v-deep .avatar-uploader .el-upload {
+:deep().avatar-uploader .el-upload {
   border: 1px dashed var(--el-border-color);
   border-radius: 6px;
   cursor: pointer;
@@ -115,11 +206,11 @@ const userFormRules = reactive({
   transition: var(--el-transition-duration-fast);
 }
 
-::v-deep .avatar-uploader .el-upload:hover {
+:deep().avatar-uploader .el-upload:hover {
   border-color: var(--el-color-primary);
 }
 
-::v-deep .el-icon.avatar-uploader-icon {
+:deep().el-icon.avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
   width: 178px;

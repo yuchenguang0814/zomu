@@ -1,4 +1,5 @@
 const { getLogin, getLoginUser } = require("../../sql/admin/login");
+const { editUsers,editPass,getPass } = require("../../sql/admin/user")
 const UserService = {
   login: async (req) => {
     let user = {
@@ -27,6 +28,54 @@ const UserService = {
           })
         }
       })
+    },
+  edit: async(req)=> {
+    const result = {
+      code: null,
+      message: '',
+      data: ''
     }
+    return editUsers(req).then(res => {
+      if (res.length === 0) {
+        result.code = 201
+        result.message = '修改用户信息失败'
+        
+        return result
+      } else {
+        result.code = 200
+        result.message = '修改用户信息成功'
+        result.data = req.req.body
+        return result
+      }
+    })
+  },
+  editPass: async(req)=> {
+    const result = {
+      code: null,
+      message: '',
+      data:''
+    }
+    return getPass(req).then(res => {
+      if(req.req.body.oldpass !== res[0].password) {
+        result.code = 201
+        result.message = '原始密码错误'
+        return result
+      } else {
+        return editPass(req).then(res => {
+          if (res.length === 0) {
+            result.code = 201
+            result.message = '修改密码失败'
+            return result
+          } else {
+            result.code = 200
+            result.message = '修改密码成功'
+            result.data = req.req.body.pass
+            return result
+          }
+        })
+      }
+    })
+   
   }
+}
 module.exports = UserService
