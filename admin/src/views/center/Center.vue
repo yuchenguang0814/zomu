@@ -86,7 +86,7 @@ import { ElDialog, ElMessage  } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 import axios from "axios";
 
-const editPassworddialogVisible = ref(false)
+
 const store = useStore();
 const avatarUrl = computed(() => store.state.userInfo.logo ? store.state.userInfo.logo : `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
 const userFormRef = ref()
@@ -119,6 +119,7 @@ const userFormRules = reactive({
     { required: true, message: '请输入公司地址', trigger: 'blur' }
   ]
 })
+const editPassworddialogVisible = ref(false)
 const ruleFormRef = ref()
 const ruleForm = reactive({
   pass: '',
@@ -167,9 +168,8 @@ const editUser = ()=> {
   userFormRef.value.validate((valid) => {
     if (valid) {
       axios.post('/admin/user/edit',userForm).then(res => {
-        const result = res.data.data.result
+        const result = res.data.data
         if (result.code !== 200) return ElMessage.error(result.message)
-        ElMessage.success(result.message)
         store.commit('changeUserInfo',result.data)
       })
     }
@@ -180,10 +180,14 @@ const editPassword = ()=> {
     if(valid){
       axios.post('/admin/user/editPass',ruleForm).then(res => {
         const result = res.data.data
+        console.log(editPassworddialogVisible[0])
         if (result.code !== 200) return ElMessage.error(result.message)
         ElMessage.success(result.message)
-        store.commit('changeUserInfo',result.data)
-      })
+        editPassworddialogVisible.value = false
+        ruleForm.pass = ''
+        ruleForm.checkPass = ''
+        ruleForm.oldpass = ''
+      }) 
     }
   })
 }

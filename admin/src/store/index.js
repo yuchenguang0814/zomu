@@ -5,7 +5,6 @@ export default createStore({
     isGetterRouter: false,
     isCollapsed: false,
     userInfo: {
-
     }
   },
   getters: {

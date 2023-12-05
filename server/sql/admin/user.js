@@ -10,14 +10,14 @@ const editUsers = (req) => {
   return exec(sql);
 }
 const getPass = (req) => {
-  let sql = `SELECT password FROM users WHERE user_id = ${req._id}`
+  let sql = `select password from users where user_id = ${req._id}`;
   return exec(sql);
-  console.log(sql)
 }
 const editPass = (req) => {
   const data = req.req.body
-  const password = md5(md5(data.password))+md5random
+  const password = md5(md5(data.pass))+md5random
   let sql = `UPDATE users SET password = '${password}' WHERE user_id = ${req._id}`
+  console.log(data)
   return exec(sql);
 }
 
