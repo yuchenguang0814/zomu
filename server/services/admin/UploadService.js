@@ -9,7 +9,7 @@ const UploadService = {
       data: ''
     }
     return editUserLogo(req).then(res=> {
-      const path = `/public/userUploads/${req.req.file.filename}`
+      const path = `/userUploads/${req.req.file.filename}`
       if (res.length === 0) {
         result.code = 201
         result.message = '修改logo失败'

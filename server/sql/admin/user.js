@@ -19,8 +19,10 @@ const editUserPass = (req) => {
   let sql = `UPDATE users SET password = '${password}' WHERE user_id = ${req._id}`
   return exec(sql);
 }
-const editUserLogo = (req, path) => {
+const editUserLogo = (req) => {
+  const path = `/userUploads/${req.req.file.filename}`
   let sql = `UPDATE users SET logo = '${path}' WHERE user_id = ${req._id}`
+  console.log(sql)
   return exec(sql);
 }
 module.exports ={

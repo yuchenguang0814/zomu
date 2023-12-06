@@ -6,6 +6,7 @@ import NewsAdd from '../views/news-manage/NewsAdd'
 import NewsList from '../views/news-manage/NewsList'
 import ProductAdd from '../views/product-manage/ProductAdd'
 import ProductList from '../views/product-manage/ProductList'
+import pageList from '../views/page-manage/PageList.vue'
 import NotFound from '../views/notfound/NotFound.vue'
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
     path: '/center',
     component: Center
   },
+  {
+    path: '/page',
+    component:pageList
+  }
+  ,
   {
     path: '/user/adduser',
     component: UserAdd

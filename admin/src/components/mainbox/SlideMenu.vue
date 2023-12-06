@@ -14,19 +14,18 @@
         <el-icon><UserFilled/></el-icon>
         <span>个人中心</span>
       </el-menu-item>
-      <el-sub-menu index="/user">
+      <!-- <el-sub-menu index="/page">
         <template #title>
           <el-icon><UserFilled/></el-icon>
-          <span>用户管理</span></template>
-        <el-menu-item index="/user/adduser">添加用户</el-menu-item>
-        <el-menu-item index="/user/userlist">用户列表</el-menu-item>
-      </el-sub-menu>
+          <span>页面管理</span></template>
+        <el-menu-item index="/page/pagelist">页面列表</el-menu-item>
+      </el-sub-menu> -->
       <el-sub-menu index="/news">
         <template #title>
           <el-icon><MessageBox/></el-icon>
-          <span>新闻管理</span></template>
-        <el-menu-item index="/news/addnews">添加新闻</el-menu-item>
-        <el-menu-item index="/news/newslist">新闻列表</el-menu-item>
+          <span>案例管理</span></template>
+        <el-menu-item index="/news/addnews">添加案例</el-menu-item>
+        <el-menu-item index="/news/newslist">案例列表</el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="/prodoct">
         <template #title>

@@ -63,23 +63,14 @@
                   <el-dialog v-model="editlogodialogVisible" title="修改logo" width="30%" draggable>
                     <el-form ref="imgFormRef" :model="imgForm" :rules="imgRules" label-width="120px" status-icon>
                       <el-form-item label="logo头像" prop="logo">
-                        <el-upload
-                      class="avatar-uploader"
-                      action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                      :show-file-list="false"
-                      :before-upload="beforeAvatarUpload"
-                      :on-change="handleChange"
-                    >
-                      <img v-if="imgForm.logo" :src="imgForm.logo" class="avatar" />
-                      <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
-                    </el-upload>
+                        <Upload :logo="imgForm.logo" @kerwinchange = "handleChange" />
                       </el-form-item>
 
                     </el-form>
                     <template #footer>
                       <span class="dialog-footer">
                         <el-button @click="editlogodialogVisible = false">取消</el-button>
-                        <el-button type="primary" @click="upload()">提交修改</el-button>
+                        <el-button type="primary" @click="uploadImg()">提交修改</el-button>
                       </span>
                     </template>
                   </el-dialog>
@@ -97,7 +88,8 @@ import { useRouter } from 'vue-router'
 import { ElDialog, ElMessage } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 import axios from "axios";
-
+import upload from '../../../util/upload'
+import Upload from '../../components/upload/Upload'
 const router = useRouter()
 const store = useStore();
 const avatarUrl = computed(() => 
@@ -105,7 +97,7 @@ const avatarUrl = computed(() =>
   'http://localhost:3000' + store.state.userInfo.logo : 
   `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
 const userFormRef = ref()
-const {username, name, userEmail,password, userPhone, userQQ, companyName, companyAddress} = store.state.userInfo
+const {username, name, userEmail,password, userPhone, userQQ, companyName, companyAddress, logo} = store.state.userInfo
 const userForm = reactive({
   username,
   userEmail,
@@ -211,77 +203,38 @@ const editPassword = ()=> {
 const imgFormRef = ref()
 
 const imgForm = reactive({
-  logo: '',
+  logo,
   file: null
 })
-const handleChange = (file) => {
-  imgForm.logo = URL.createObjectURL(file.raw)
-  imgForm.file = file.raw
-}
 const imgRules = reactive({
   logo: [
     { required: true,message: '请上传图片', trigger: 'blue' },
   ]
 })
-const beforeAvatarUpload = (rawFile) => {
-  if (rawFile.size / 1024 / 1024 > 2) {
-    // 图片的大小是不是在2mb之下
-    ElMessage.error("图片的大小是不是在2mb之下");
-    return false;
-  }
-  return true;
-};
-const upload = () => {
-  imgFormRef.value.validate((valid) => {
-    const imgFormData = new FormData()
-    for(let i in imgForm) {
-      imgFormData.append(i,imgForm[i])
-    }
-    axios.post('/admin/upload',imgFormData,{
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(res => {
+const handleChange = (file) => {
+  imgForm.logo = URL.createObjectURL(file)
+  imgForm.file = file
+}
+const uploadImg = () => {
+  imgFormRef.value.validate(async (valid) => {
+    if(valid) {
+      const res = await upload('/admin/upload',imgForm)
       const result = res.data.data
-        if (result.code !== 200) return ElMessage.error(result.message)
+      if (result.code !== 200) return ElMessage.error(result.message)
 
-        ElMessage.success(result.message)
-        editlogodialogVisible.value = false
-        const logoInfo = {
-          logo: result.data
-        }
-        store.commit('changeUserInfo',logoInfo)
-    })
+      ElMessage.success(result.message)
+      editlogodialogVisible.value = false
+      const logoInfo = {
+        logo: result.data
+      }
+      store.commit('changeUserInfo',logoInfo)
+    }
+   
   })
 }
 </script>
 <style scoped>
 .el-row {
   margin-top: 50px;
-}
-:deep().avatar-uploader .avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
-}
-:deep().avatar-uploader .el-upload {
-  border: 1px dashed var(--el-border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--el-transition-duration-fast);
-}
-
-:deep().avatar-uploader .el-upload:hover {
-  border-color: var(--el-color-primary);
-}
-
-:deep().el-icon.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  text-align: center;
 }
 </style>
