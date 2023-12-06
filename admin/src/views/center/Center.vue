@@ -36,21 +36,9 @@
                   <el-form-item label="QQ号码" prop="userQQ">
                     <el-input v-model="userForm.userQQ" />
                   </el-form-item>
-                  <!-- <el-form-item label="logo" prop="logo">
-                    <el-upload
-                      class="avatar-uploader"
-                      action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-                      :show-file-list="false"
-                      :auto-upload="false"
-                      :on-change="handleChange"
-                    >
-                      <img v-if="userForm.logo" :src="userForm.logo" class="avatar" />
-                      <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
-                    </el-upload>
-                  </el-form-item> -->
                   <el-button type="primary" @click="editUser()">修改用户信息</el-button>
                   <el-button type="primary" @click="editPassworddialogVisible = true">修改密码</el-button>
-                  <!-- <el-button type="primary" @click="editlogodialogVisible = true">修改logo</el-button> -->
+                  <el-button type="primary" @click="editlogodialogVisible = true">修改logo</el-button>
                   <el-dialog v-model="editPassworddialogVisible" title="修改密码" width="30%" draggable>
                     <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleFormRef" label-width="120px">
                       <el-form-item label="原始密码" prop="oldpass">
@@ -72,6 +60,29 @@
                       </span>
                     </template>
                   </el-dialog>
+                  <el-dialog v-model="editlogodialogVisible" title="修改logo" width="30%" draggable>
+                    <el-form ref="imgFormRef" :model="imgForm" :rules="imgRules" label-width="120px" status-icon>
+                      <el-form-item label="logo头像" prop="logo">
+                        <el-upload
+                      class="avatar-uploader"
+                      action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                      :show-file-list="false"
+                      :before-upload="beforeAvatarUpload"
+                      :on-change="handleChange"
+                    >
+                      <img v-if="imgForm.logo" :src="imgForm.logo" class="avatar" />
+                      <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                    </el-upload>
+                      </el-form-item>
+
+                    </el-form>
+                    <template #footer>
+                      <span class="dialog-footer">
+                        <el-button @click="editlogodialogVisible = false">取消</el-button>
+                        <el-button type="primary" @click="upload()">提交修改</el-button>
+                      </span>
+                    </template>
+                  </el-dialog>
                 </el-form>
             </div>
           </template>
@@ -82,22 +93,26 @@
 <script setup>
 import { useStore } from "vuex";
 import { computed, ref, reactive} from 'vue'
-import { ElDialog, ElMessage  } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { ElDialog, ElMessage } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 import axios from "axios";
 
-
+const router = useRouter()
 const store = useStore();
-const avatarUrl = computed(() => store.state.userInfo.logo ? store.state.userInfo.logo : `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
+const avatarUrl = computed(() => 
+  store.state.userInfo.logo ? 
+  'http://localhost:3000' + store.state.userInfo.logo : 
+  `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
 const userFormRef = ref()
-const {username, name, userEmail,password, userPhone, userQQ, companyName, logo, companyAddress} = store.state.userInfo
+const {username, name, userEmail,password, userPhone, userQQ, companyName, companyAddress} = store.state.userInfo
 const userForm = reactive({
   username,
   userEmail,
   userPhone,
   userQQ,
   companyName,
-  companyAddress,
+  companyAddress
 })
 const userFormRules = reactive({
   username: [
@@ -117,9 +132,10 @@ const userFormRules = reactive({
   ],
   companyAddress: [
     { required: true, message: '请输入公司地址', trigger: 'blur' }
-  ]
+  ],
 })
 const editPassworddialogVisible = ref(false)
+const editlogodialogVisible = ref(false)
 const ruleFormRef = ref()
 const ruleForm = reactive({
   pass: '',
@@ -170,6 +186,8 @@ const editUser = ()=> {
       axios.post('/admin/user/edit',userForm).then(res => {
         const result = res.data.data
         if (result.code !== 200) return ElMessage.error(result.message)
+        ElMessage.success(result.message)
+        console.log(result.data)
         store.commit('changeUserInfo',result.data)
       })
     }
@@ -180,15 +198,60 @@ const editPassword = ()=> {
     if(valid){
       axios.post('/admin/user/editPass',ruleForm).then(res => {
         const result = res.data.data
-        console.log(editPassworddialogVisible[0])
         if (result.code !== 200) return ElMessage.error(result.message)
         ElMessage.success(result.message)
         editPassworddialogVisible.value = false
-        ruleForm.pass = ''
-        ruleForm.checkPass = ''
-        ruleForm.oldpass = ''
+        localStorage.removeItem('token')
+        store.commit('clearUserInfo')
+        router.push('/login')
       }) 
     }
+  })
+}
+const imgFormRef = ref()
+
+const imgForm = reactive({
+  logo: '',
+  file: null
+})
+const handleChange = (file) => {
+  imgForm.logo = URL.createObjectURL(file.raw)
+  imgForm.file = file.raw
+}
+const imgRules = reactive({
+  logo: [
+    { required: true,message: '请上传图片', trigger: 'blue' },
+  ]
+})
+const beforeAvatarUpload = (rawFile) => {
+  if (rawFile.size / 1024 / 1024 > 2) {
+    // 图片的大小是不是在2mb之下
+    ElMessage.error("图片的大小是不是在2mb之下");
+    return false;
+  }
+  return true;
+};
+const upload = () => {
+  imgFormRef.value.validate((valid) => {
+    const imgFormData = new FormData()
+    for(let i in imgForm) {
+      imgFormData.append(i,imgForm[i])
+    }
+    axios.post('/admin/upload',imgFormData,{
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(res => {
+      const result = res.data.data
+        if (result.code !== 200) return ElMessage.error(result.message)
+
+        ElMessage.success(result.message)
+        editlogodialogVisible.value = false
+        const logoInfo = {
+          logo: result.data
+        }
+        store.commit('changeUserInfo',logoInfo)
+    })
   })
 }
 </script>

@@ -1,5 +1,5 @@
 const { getLogin, getLoginUser } = require("../../sql/admin/login");
-const { editUsers,editPass,getPass } = require("../../sql/admin/user")
+const { editUsers,editUserPass,getPass } = require("../../sql/admin/user")
 const md5 = require('blueimp-md5');
 const md5random = 'yWycs';
 const UserService = {
@@ -58,16 +58,13 @@ const UserService = {
       data:''
     }
     return getPass(req).then(res => {
-      console.log(req.req.body.oldpass)
       const oldpass = md5(md5(req.req.body.oldpass))+md5random
-      console.log(oldpass)
-      console.log(res[0].password)
       if(oldpass !== res[0].password) {
         result.code = 201
         result.message = '原始密码错误'
         return result
       } else {
-        return editPass(req).then(res => {
+        return editUserPass(req).then(res => {
           if (res.length === 0) {
             result.code = 202
             result.message = '修改密码失败'

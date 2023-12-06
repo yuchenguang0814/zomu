@@ -3,5 +3,9 @@
 node_modules/
  
 dist/
- 
+
+pubilc/
+
+userUploads/
+
 npm-debug.log

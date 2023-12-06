@@ -6,6 +6,7 @@ var logger = require('morgan');
 // var usersRouter = require('./routes/users');
 var UserRouter = require('./routes/admin/UserRouter');
 const JWT = require('./util/JWT');
+const UploadRouter = require('./routes/admin/Upload');
 
 
 var app = express();
@@ -25,24 +26,29 @@ app.use((req, res, next) => {
     next()
     return
   }
-  const token = req.headers['authorization'].split(" ")[1]
-  if(token) {
-    var payload = JWT.verify(token)
-    if(payload) {
-      const newToken = JWT.generate({
-        _id:payload._id,
-        username:payload.username
-      },"1000s")
-      res.header("Authoriztion",newToken)
-      next()
-    } else {
-      res.status(401).send({errCode:'-1',errInfo:'token过期'})
+  if(req.headers['authorization']) {
+    const token = req.headers['authorization'].split(" ")[1]
+    if(token) {
+      var payload = JWT.verify(token)
+      if(payload) {
+        const newToken = JWT.generate({
+          _id:payload._id,
+          username:payload.username
+        },"1000s")
+        res.header("Authoriztion",newToken)
+        next()
+      } else {
+        res.status(401).send({errCode:'-1',errInfo:'token过期'})
+      }
     }
+  } else {
+    next()
   }
 })
 
 // app.use('/admin/users', usersRouter);
 app.use(UserRouter)
+app.use(UploadRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

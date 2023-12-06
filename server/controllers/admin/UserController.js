@@ -24,7 +24,6 @@ const UserController = {
     var payload = JWT.verify(token)
     if (method === "POST" && req.path === "/admin/user/edit") {
       const result = await  UserService.edit({_id:payload._id,req})
-      console.log(result)
       res.send({
         data:result
       })  
