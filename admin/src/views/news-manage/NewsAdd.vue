@@ -75,7 +75,6 @@ const addNews =() => {
       const result = res.data.data
       if (result.code !== 200) return ElMessage.error(result.message)
       ElMessage.success(result.message)
-      console.log(res)
       router.push('/news/newslist')
     }
   })

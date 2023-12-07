@@ -1,4 +1,4 @@
-const { addNews,getNewsList } = require("../../sql/admin/news");
+const { addNews,getNewsList,editPublish,removeNewById } = require("../../sql/admin/news");
 const NewService = {
   addNew:async (req) => {
     const result = {
@@ -36,6 +36,41 @@ const NewService = {
         return result
       }
     })
+  },
+  publish:async (req) => {
+    const result = {
+      code: null,
+      message: '',
+    }
+    return editPublish(req).then(res => {
+      if (res.length === 0) {
+        result.code = 201
+        result.message = '修改失败'
+        return result
+      } else {
+        result.code = 200
+        result.message = '修改成功'
+        return result
+      }
+    })
+  },
+  deleteNew:async (req) => {
+    const result = {
+      code: null,
+      message: '',
+    }
+    return removeNewById(req).then(res => {
+      if (res.length === 0) {
+        result.code = 201
+        result.message = '删除失败'
+        return result
+      } else {
+        result.code = 200
+        result.message = '删除成功'
+        return result
+      }
+    })
   }
+  
 }
 module.exports = NewService

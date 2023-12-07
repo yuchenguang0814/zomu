@@ -12,9 +12,13 @@ const getNewsList = (req) => {
   // }
   // let sql = `SELECT * FROM news Where ${where} ORDER BY createtime DESC limit ${offset},${size}`
   let sql = `SELECT * FROM news`
-  console.log(sql)
   return exec(sql);
 }
+const editPublish = (req) => {
+  let sql = `UPDATE news SET isPublish = '${req.body.isPublish}' WHERE id = ${req.body._id}`
+  return exec(sql);
+}
+
 const getTotal = (req) => {
   let where = '1 = 1'
   if(req.query != '') {
@@ -28,7 +32,7 @@ const getTotal = (req) => {
 }
 const addNews = (req) => {
   const path = `/newUploads/${req.file.filename}`
-  let sql = `insert into news values (null,null,'${req.body.title}','${req.body.pageKey}','${req.body.pageDescription}','${req.body.author}',NOW(),'${req.body.content}','0','${path}')`;
+  let sql = `insert into news values (null,null,'${req.body.title}','${req.body.pageKey}','${req.body.pageDescription}','${req.body.author}',NOW(),'${req.body.content}',0,'${path}')`;
   console.log(sql)
   return exec(sql);
 }
@@ -41,7 +45,8 @@ const editNewById = (req) => {
   return exec(sql);
 }
 const removeNewById = (req) => {
-  let sql = `DELETE FROM news WHERE id = ${req}`  
+  let sql = `DELETE FROM news WHERE id = ${req.params.id}`  
+  console.log(sql)
   return exec(sql);
 }
 const getVideosList = (req) => {
@@ -90,5 +95,6 @@ module.exports ={
   addVideos,
   removeVidById,
   getVideo,
-  editVideoById
+  editVideoById,
+  editPublish
 }
