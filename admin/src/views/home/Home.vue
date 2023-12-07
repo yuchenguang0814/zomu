@@ -1,7 +1,8 @@
 <template>
   <div>
-    <el-page-header content="首页" icon="" title="企业网站管理系统">
-    </el-page-header>
+    <el-card><el-page-header content="首页" icon="" title="企业网站管理系统">
+    </el-page-header></el-card>
+    
     <el-card class="box-card">
       <el-row>
         <el-col :span="4"><el-avatar shape="square" :size="100" :src="avatarUrl" /></el-col>

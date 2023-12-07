@@ -1,7 +1,8 @@
 <template>
   <div>
-    <el-page-header content="个人中心" icon="" title="企业网站管理系统">
-    </el-page-header>
+    <el-card><el-page-header content="个人中心" icon="" title="企业网站管理系统">
+    </el-page-header></el-card>
+    
     <el-row :gutter="20">
       <el-col :span='4' style="text-align: center;">
         <el-card class="box-card">

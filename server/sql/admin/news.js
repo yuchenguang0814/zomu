@@ -1,16 +1,18 @@
 const { exec} = require('../../db/mysql');
 const getNewsList = (req) => {
-  const page = req.pagenum
-  const size = req.pagesize
-  const offset = (page-1)*size
-  let where = '1 = 1'
-  if(req.query != '') {
-    const obj = JSON.parse(req.query)
-    if(obj.cid) {
-      where = where + ' and news.cid =' + obj.cid
-    }
-  }
-  let sql = `SELECT * FROM news Where ${where} ORDER BY createtime DESC limit ${offset},${size}`
+  // const page = req.pagenum
+  // const size = req.pagesize
+  // const offset = (page-1)*size
+  // let where = '1 = 1'
+  // if(req.query != '') {
+  //   const obj = JSON.parse(req.query)
+  //   if(obj.cid) {
+  //     where = where + ' and news.cid =' + obj.cid
+  //   }
+  // }
+  // let sql = `SELECT * FROM news Where ${where} ORDER BY createtime DESC limit ${offset},${size}`
+  let sql = `SELECT * FROM news`
+  console.log(sql)
   return exec(sql);
 }
 const getTotal = (req) => {
@@ -25,7 +27,9 @@ const getTotal = (req) => {
   return exec(sql);
 }
 const addNews = (req) => {
-  let sql = `insert into news values (null,${req.cid},'${req.title}','${req.pageKey}','${req.pageDescription}','${req.author}',null,'${req.content}')`;
+  const path = `/newUploads/${req.file.filename}`
+  let sql = `insert into news values (null,null,'${req.body.title}','${req.body.pageKey}','${req.body.pageDescription}','${req.body.author}',NOW(),'${req.body.content}','0','${path}')`;
+  console.log(sql)
   return exec(sql);
 }
 const getNew = (req) => {
@@ -47,7 +51,7 @@ const getVideosList = (req) => {
   let sql = `SELECT * FROM video ORDER BY createtime DESC limit ${offset},${size}`
   return exec(sql);
 }
-const getVTotal = (req) => {
+const getVTotal = (req) => {  
   let where = '1 = 1'
   if(req.query != '') {
     const obj = JSON.parse(req.query)

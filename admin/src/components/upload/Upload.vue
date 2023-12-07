@@ -13,6 +13,7 @@
 <script setup>
 import { computed, defineEmits,defineProps } from 'vue';
 import { ElMessage } from 'element-plus'
+import { Plus } from '@element-plus/icons-vue'
 const porps = defineProps({
   logo: String
 })
