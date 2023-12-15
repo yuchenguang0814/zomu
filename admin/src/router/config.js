@@ -4,10 +4,12 @@ import UserAdd from '../views/user-manage/UserAdd'
 import UserList from '../views/user-manage/UserList'
 import NewsAdd from '../views/news-manage/NewsAdd'
 import NewsList from '../views/news-manage/NewsList'
+import NewsEdit from '../views/news-manage/NewsEdit'
 import ProductAdd from '../views/product-manage/ProductAdd'
 import ProductList from '../views/product-manage/ProductList'
 import pageList from '../views/page-manage/PageList.vue'
 import NotFound from '../views/notfound/NotFound.vue'
+
 const routes = [
   {
     path: '/index',
@@ -37,6 +39,10 @@ const routes = [
   {
     path: '/news/newslist',
     component: NewsList
+  },
+  {
+    path:'/news/editnews/:id',
+    component:NewsEdit
   },
   {
     path: '/prodoct/addproduct',

@@ -10,7 +10,7 @@ const UserController = {
         const token = JWT.generate({
           _id:result.data[0].user_id,
           username:res.username
-        },"1000s")
+        },"600s")
         res.header("Authoriztion",token)
       }
       res.send({

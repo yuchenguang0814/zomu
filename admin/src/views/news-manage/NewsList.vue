@@ -43,10 +43,12 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios';
 import formatTime from '../../../util/formatTime'
 import { ElMessage } from 'element-plus'
 import { Star, Edit, Delete } from '@element-plus/icons-vue'
+const router = useRouter()
 const tableDate = ref([])
 onMounted(() => {
   getTableData()
@@ -71,6 +73,9 @@ const handleDelete = async (item) => {
   if (result.code !== 200) return ElMessage.error(result.message)
   ElMessage.success(result.message)
   await getTableData()
+}
+const handleEdit = async (item) => {
+  router.push(`/news/editnews/${item.id}`)
 }
 </script>
 <style>
