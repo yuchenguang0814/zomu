@@ -9,11 +9,11 @@ const NewService = {
     return addNews(data).then(res => {
       if (res.length === 0) {
         result.code = 201
-        result.message = '添加新闻失败'
+        result.message = '添加案例失败'
         return result
       } else {
         result.code = 200
-        result.message = '添加新闻成功'
+        result.message = '添加案例成功'
         return result
       }
     })
@@ -24,18 +24,34 @@ const NewService = {
       message: '',
       data: ''
     }
-    return getNewsList(req).then(res => {
-      if (res.length === 0) {
-        result.code = 201
-        result.message = '获取新闻列表失败'
-        return result
-      } else {
-        result.code = 200
-        result.message = '获取新闻列表成功'
-        result.data = JSON.parse(JSON.stringify(res))
-        return result
-      }
-    })
+    if(!req.params.id) {
+      return getNewsList(req).then(res => {
+        if (res.length === 0) {
+          result.code = 201
+          result.message = '获取案例列表失败'
+          return result
+        } else {
+          result.code = 200
+          result.message = '获取案例列表成功'
+          result.data = JSON.parse(JSON.stringify(res))
+          return result
+        }
+      })
+    } else {
+      return getNewsList(req.params).then(res => {
+        if (res.length === 0) {
+          result.code = 201
+          result.message = '获取案例失败'
+          return result
+        } else {
+          result.code = 200
+          result.message = '获取案例成功'
+          result.data = JSON.parse(JSON.stringify(res))
+          return result
+        }
+      })
+    }
+    
   },
   publish:async (req) => {
     const result = {

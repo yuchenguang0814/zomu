@@ -17,10 +17,10 @@
         <el-input v-model="newForm.author" disabled ></el-input>
       </el-form-item>
       <el-form-item label="内容" prop="content">
-        <Editor @event="editorHandleChange"/>
+        <Editor @event="editorHandleChange" :content="newForm.content" v-if="newForm.content"/>
       </el-form-item>
       <el-form-item label="封面图片" prop="imgUrl">
-        <Upload :logo="newForm.imgUrl" @kerwinchange = "handleChange" />
+        <Upload :logo="newForm.imgurl" @kerwinchange = "handleChange" />
       </el-form-item>
       <el-form-item label="案例关键词" prop="pageKey">
         <el-input v-model="newForm.pageKey"></el-input>
@@ -36,13 +36,15 @@
 </template>
 <script setup>
 import { useStore } from "vuex";
-import {ref, reactive} from 'vue'
+import {ref, reactive,onMounted,computed} from 'vue'
 import upload from '../../../util/upload'
 import Upload from '../../components/upload/Upload'
 import Editor from '../../components/editor/Editor'
 import { ElMessage } from 'element-plus'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import axios from 'axios';
 const router = useRouter()
+const route = useRoute()
 const newFormRef = ref()
 const store = useStore();
 const {companyAddress} = store.state.userInfo
@@ -52,10 +54,11 @@ const newForm = reactive({
   pageDescription: '',
   author: companyAddress,
   content: '',
-  imgUrl: '',
+  imgurl: '',
   isPublish:0,
   file:null  
 })
+
 const newFormRules = reactive({
   title:[{required:true,message:'请输入案例标题',trigger:'blur'}],
   author:[{required:true,message:'请输入作者',trigger:'blur'}],
@@ -83,6 +86,12 @@ const addNews =() => {
 const handleBack =()=> {
   router.back()
 }
+onMounted(async () => {
+  const result = await axios.get(`/admin/new/getNews/${route.params.id}`)
+   Object.assign(newForm,result.data.data.data[0])
+  console.log(result.data.data.data[0])
+  console.log(newForm)
+})
 </script>
 <style scoped>
 .el-form {

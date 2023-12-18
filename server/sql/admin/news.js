@@ -11,7 +11,12 @@ const getNewsList = (req) => {
   //   }
   // }
   // let sql = `SELECT * FROM news Where ${where} ORDER BY createtime DESC limit ${offset},${size}`
-  let sql = `SELECT * FROM news`
+  const _id = req.id 
+  let where = '1 = 1'
+  if(_id) {
+    where = where + ' and news.id =' + _id
+  }
+  let sql = `SELECT * FROM news Where ${where} ORDER BY createtime DESC`
   return exec(sql);
 }
 const editPublish = (req) => {
@@ -33,7 +38,6 @@ const getTotal = (req) => {
 const addNews = (req) => {
   const path = `/newUploads/${req.file.filename}`
   let sql = `insert into news values (null,null,'${req.body.title}','${req.body.pageKey}','${req.body.pageDescription}','${req.body.author}',NOW(),'${req.body.content}',0,'${path}')`;
-  console.log(sql)
   return exec(sql);
 }
 const getNew = (req) => {
@@ -46,7 +50,6 @@ const editNewById = (req) => {
 }
 const removeNewById = (req) => {
   let sql = `DELETE FROM news WHERE id = ${req.params.id}`  
-  console.log(sql)
   return exec(sql);
 }
 const getVideosList = (req) => {
