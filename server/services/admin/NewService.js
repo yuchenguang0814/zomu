@@ -1,4 +1,4 @@
-const { addNews,getNewsList,editPublish,removeNewById } = require("../../sql/admin/news");
+const { addNews,getNewsList,editPublish,removeNewById,editNewById } = require("../../sql/admin/news");
 const NewService = {
   addNew:async (req) => {
     const result = {
@@ -14,6 +14,24 @@ const NewService = {
       } else {
         result.code = 200
         result.message = '添加案例成功'
+        return result
+      }
+    })
+  },
+  editNew:async (req) => {
+    const result = {
+      code: null,
+      message: ''
+    }
+    const data = req.req
+    return editNewById(data).then(res => {
+      if (res.length === 0) {
+        result.code = 201
+        result.message = '更新案例失败'
+        return result
+      } else {
+        result.code = 200
+        result.message = '更新案例成功'
         return result
       }
     })

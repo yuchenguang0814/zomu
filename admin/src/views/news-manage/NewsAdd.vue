@@ -44,12 +44,12 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const newFormRef = ref()
 const store = useStore();
-const {companyAddress} = store.state.userInfo
+const {companyName} = store.state.userInfo
 const newForm = reactive({
   title: '',
   pageKey: '',
   pageDescription: '',
-  author: companyAddress,
+  author: companyName,
   content: '',
   imgUrl: '',
   isPublish:0,

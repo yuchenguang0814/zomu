@@ -12,6 +12,12 @@ const NewController = {
       data:result
     })
   },
+  edit:async (req, res) => {
+    const result = await  NewService.editNew({req})
+    res.send({
+      data:result
+    })  
+  },
   editPublish:async (req, res) => {
     const result = await  NewService.publish(req)
     res.send({

@@ -19,7 +19,7 @@
       <el-form-item label="内容" prop="content">
         <Editor @event="editorHandleChange" :content="newForm.content" v-if="newForm.content"/>
       </el-form-item>
-      <el-form-item label="封面图片" prop="imgUrl">
+      <el-form-item label="封面图片" prop="imgurl">
         <Upload :logo="newForm.imgurl" @kerwinchange = "handleChange" />
       </el-form-item>
       <el-form-item label="案例关键词" prop="pageKey">
@@ -28,7 +28,7 @@
       <el-form-item label="关键词描述" prop="pageDescription">
         <el-input v-model="newForm.pageDescription" type="textarea" style="min-height: 80px;"></el-input>
       </el-form-item>
-      <el-button type="primary" @click="addNews()">添加案例</el-button>
+      <el-button type="primary" @click="addNews()">更新案例</el-button>
     </el-form>
     
     
@@ -47,12 +47,12 @@ const router = useRouter()
 const route = useRoute()
 const newFormRef = ref()
 const store = useStore();
-const {companyAddress} = store.state.userInfo
+const {companyName} = store.state.userInfo
 const newForm = reactive({
   title: '',
   pageKey: '',
   pageDescription: '',
-  author: companyAddress,
+  author: companyName,
   content: '',
   imgurl: '',
   isPublish:0,
@@ -62,11 +62,11 @@ const newForm = reactive({
 const newFormRules = reactive({
   title:[{required:true,message:'请输入案例标题',trigger:'blur'}],
   author:[{required:true,message:'请输入作者',trigger:'blur'}],
-  imgUrl:[{required:true,message:'请上传图片',trigger:'blur'}],
+  imgurl:[{required:true,message:'请上传图片',trigger:'blur'}],
   content:[{required:true,message:'请输入案例内容',trigger:'blur'}]
 })
 const handleChange = (file) => {
-  newForm.imgUrl = URL.createObjectURL(file)
+  newForm.imgurl = URL.createObjectURL(file)
   newForm.file = file
 }
 const editorHandleChange = (data) => {
@@ -75,11 +75,11 @@ const editorHandleChange = (data) => {
 const addNews =() => {
   newFormRef.value.validate(async (valid) => {
     if(valid) {
-      const res = await upload('/admin/new/addnew',newForm)
+      const res = await upload('/admin/new/getNews',newForm)
       const result = res.data.data
       if (result.code !== 200) return ElMessage.error(result.message)
       ElMessage.success(result.message)
-      router.push('/news/newslist')
+      router.back()
     }
   })
 }
@@ -88,9 +88,8 @@ const handleBack =()=> {
 }
 onMounted(async () => {
   const result = await axios.get(`/admin/new/getNews/${route.params.id}`)
-   Object.assign(newForm,result.data.data.data[0])
-  console.log(result.data.data.data[0])
-  console.log(newForm)
+  Object.assign(newForm,result.data.data.data[0])
+  newForm.author = companyName
 })
 </script>
 <style scoped>

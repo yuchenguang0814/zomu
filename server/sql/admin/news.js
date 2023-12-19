@@ -45,8 +45,14 @@ const getNew = (req) => {
   return exec(sql);
 }
 const editNewById = (req) => {
-  let sql = `UPDATE news SET cid = '${req.cid}',title = '${req.title}',pageKey = '${req.pageKey}',pageDescription = '${req.pageDescription}',author = '${req.author}',content = '${req.content}' WHERE id = ${req.id}`
-  return exec(sql);
+  if(req.file) {
+    const path = `/newUploads/${req.file.filename}`
+    let sql = `UPDATE news SET title = '${req.body.title}',pageKey = '${req.body.pageKey}',pageDescription = '${req.body.pageDescription}',author = '${req.body.author}',createtime = NOW(),content = '${req.body.content}',imgurl = '${path}' WHERE id = ${req.body.id}`
+    return exec(sql);
+  } else {
+    let sql = `UPDATE news SET title = '${req.body.title}',pageKey = '${req.body.pageKey}',pageDescription = '${req.body.pageDescription}',author = '${req.body.author}',createtime = NOW(),content = '${req.body.content}' WHERE id = ${req.body.id}`
+    return exec(sql);
+  }
 }
 const removeNewById = (req) => {
   let sql = `DELETE FROM news WHERE id = ${req.params.id}`  
