@@ -219,6 +219,7 @@ const handleChange = (file) => {
 const uploadImg = () => {
   imgFormRef.value.validate(async (valid) => {
     if(valid) {
+      
       const res = await upload('/admin/upload',imgForm)
       const result = res.data.data
       if (result.code !== 200) return ElMessage.error(result.message)

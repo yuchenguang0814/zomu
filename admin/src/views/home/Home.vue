@@ -35,7 +35,8 @@ const store = useStore();
 const avatarUrl = computed(() => 
   store.state.userInfo.logo ? 
   'http://localhost:3000' + store.state.userInfo.logo : 
-  `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)</script>
+  `https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png`)
+  </script>
 <style scoped>
 .box-card {
   margin-top: 50px;

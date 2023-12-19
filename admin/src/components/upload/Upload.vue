@@ -22,11 +22,8 @@ const uploadImg = computed(() =>
   porps.logo.includes("blob") ? 
   porps.logo : 
   'http://localhost:3000' + porps.logo)
-console.log(porps.logo)
-console.log(uploadImg)
 const handleChange = (file) => {
   emit('kerwinchange',file.raw)
- 
 }
 const beforeAvatarUpload = (rawFile) => {
   if (rawFile.size / 1024 / 1024 > 2) {
