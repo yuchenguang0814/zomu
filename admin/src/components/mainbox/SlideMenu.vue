@@ -33,6 +33,7 @@
           <span>产品管理</span></template>
         <el-menu-item index="/prodoct/addproduct">添加产品</el-menu-item>
         <el-menu-item index="/prodoct/productlist">产品列表</el-menu-item>
+        <el-menu-item index="/prodoct/categorylist">产品类别</el-menu-item>
       </el-sub-menu>
     </el-menu>
   </el-aside>

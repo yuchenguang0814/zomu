@@ -45,6 +45,7 @@
           <el-image style="width: 100%;" :src="`${publicPath }` + previewDate.imgurl"  />
           <h2>{{previewDate.title}}</h2>
           <span style="font-size:14px;color:#333"> {{ formatTime.getTime(previewDate.createtime) }}</span>
+          <br>
           <span style="font-size:14px;color:#333">{{previewDate.author}}</span>
           <el-divider>
       <el-icon><star-filled /></el-icon>

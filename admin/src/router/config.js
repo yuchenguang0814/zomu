@@ -7,6 +7,7 @@ import NewsList from '../views/news-manage/NewsList'
 import NewsEdit from '../views/news-manage/NewsEdit'
 import ProductAdd from '../views/product-manage/ProductAdd'
 import ProductList from '../views/product-manage/ProductList'
+import ProductCategory from '../views/product-manage/ProductCategory.vue'
 import pageList from '../views/page-manage/PageList.vue'
 import NotFound from '../views/notfound/NotFound.vue'
 
@@ -47,6 +48,10 @@ const routes = [
   {
     path: '/prodoct/addproduct',
     component: ProductAdd
+  },
+  {
+    path: '/prodoct/categorylist',
+    component: ProductCategory
   },
   {
     path: '/prodoct/productlist',
