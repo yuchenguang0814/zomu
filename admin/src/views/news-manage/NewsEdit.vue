@@ -28,7 +28,7 @@
       <el-form-item label="关键词描述" prop="pageDescription">
         <el-input v-model="newForm.pageDescription" type="textarea" style="min-height: 80px;"></el-input>
       </el-form-item>
-      <el-button type="primary" @click="addNews()">更新案例</el-button>
+      <el-button type="primary" @click="addNews()" style="margin: 0 auto;display: block;">更新案例</el-button>
     </el-form>
     
     

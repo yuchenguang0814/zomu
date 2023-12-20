@@ -40,7 +40,9 @@ const props = defineProps({
       // props.content && valueHtml(props.content)
      
     })
-    const toolbarConfig = {}
+    const toolbarConfig = { 
+      excludeKeys:["group-video","emotion"]
+    }
     const editorConfig = { 
       placeholder: '请输入内容...',
       MENU_CONF: {
