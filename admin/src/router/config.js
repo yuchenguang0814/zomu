@@ -9,7 +9,7 @@ import ProductAdd from '../views/product-manage/ProductAdd'
 import ProductList from '../views/product-manage/ProductList'
 import pageList from '../views/page-manage/PageList.vue'
 import NotFound from '../views/notfound/NotFound.vue'
-
+import ProEdit from '../views/product-manage/ProEdit.vue'
 const routes = [
   {
     path: '/index',
@@ -51,6 +51,10 @@ const routes = [
   {
     path: '/prodoct/productlist',
     component: ProductList
+  },
+  {
+    path: '/prodoct/editpros/:id',
+    component: ProEdit
   },
   {
     path: '/',
