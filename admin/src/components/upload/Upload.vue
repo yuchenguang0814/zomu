@@ -1,22 +1,24 @@
 <template>
   <el-upload
     class="avatar-uploader"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
     :show-file-list="false"
     :before-upload="beforeAvatarUpload"
     :on-change="handleChange"
+    :on-remove="handleRemove"
   >
     <img v-if="porps.logo" :src="uploadImg" class="avatar" />
-    <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+    <el-icon v-else class="avatar-uploader-icon">
+      <Plus /></el-icon>
   </el-upload>
 </template>
 <script setup>
-import { computed, defineEmits,defineProps } from 'vue';
+import { computed, defineEmits,defineProps,ref } from 'vue';
 import { ElMessage } from 'element-plus'
-import { Plus } from '@element-plus/icons-vue'
+import { Plus,Delete } from '@element-plus/icons-vue'
 const porps = defineProps({
   logo: String
 })
+const disabled = ref(true)
 const emit = defineEmits(['kerwinchange'])
 const uploadImg = computed(() => 
   porps.logo.includes("blob") ? 
@@ -33,6 +35,9 @@ const beforeAvatarUpload = (rawFile) => {
   }
   return true;
 };
+const handleRemove = (uploadFile, uploadFiles) => {
+  console.log(uploadFile, uploadFiles)
+}
 </script>
 
 <style scoped>

@@ -82,7 +82,6 @@ const getTableData = async () => {
 }
 const handlePreview = (data) => {
   previewDate.value = data
-  console.log(data)
   dialogVisible.value = true
 }
 const handleSwitchChange = async (item) => {

@@ -7,8 +7,12 @@ import NewsList from '../views/news-manage/NewsList'
 import NewsEdit from '../views/news-manage/NewsEdit'
 import ProductAdd from '../views/product-manage/ProductAdd'
 import ProductList from '../views/product-manage/ProductList'
-import ProductCategory from '../views/product-manage/ProductCategory.vue'
+import ProEdit from '../views/product-manage/ProEdit.vue'
+import CateAdd from '../views/cate-manage/CateAdd.vue'
+import CateList from '../views/cate-manage/CateList.vue'
+import CateEdit from '../views/cate-manage/CateEdit.vue'
 import pageList from '../views/page-manage/PageList.vue'
+import PageEdit from '../views/page-manage/PageEdit.vue'
 import NotFound from '../views/notfound/NotFound.vue'
 
 const routes = [
@@ -21,10 +25,25 @@ const routes = [
     component: Center
   },
   {
-    path: '/page',
+    path: '/page/pagelist',
     component:pageList
-  }
-  ,
+  },
+  {
+    path: '/page/editpage/:id',
+    component:PageEdit
+  },
+  {
+    path: '/cates/addcates',
+    component: CateAdd
+  },
+  {
+    path: '/cates/cateslist',
+    component: CateList
+  },
+  {
+    path: '/cates/editcates/:id',
+    component: CateEdit
+  },
   {
     path: '/user/adduser',
     component: UserAdd
@@ -50,12 +69,12 @@ const routes = [
     component: ProductAdd
   },
   {
-    path: '/prodoct/categorylist',
-    component: ProductCategory
-  },
-  {
     path: '/prodoct/productlist',
     component: ProductList
+  },
+  {
+    path: '/prodoct/editpros/:id',
+    component: ProEdit
   },
   {
     path: '/',

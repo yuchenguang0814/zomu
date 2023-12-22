@@ -8,7 +8,7 @@ var UserRouter = require('./routes/admin/UserRouter');
 const JWT = require('./util/JWT');
 const UploadRouter = require('./routes/admin/Upload');
 const NewRouter = require('./routes/admin/NewRouter');
-
+const ProRouter = require('./routes/admin/ProRouter');
 
 var app = express();
 
@@ -51,6 +51,7 @@ app.use((req, res, next) => {
 app.use(UserRouter)
 app.use(UploadRouter)
 app.use(NewRouter)
+app.use(ProRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -33,7 +33,19 @@
           <span>产品管理</span></template>
         <el-menu-item index="/prodoct/addproduct">添加产品</el-menu-item>
         <el-menu-item index="/prodoct/productlist">产品列表</el-menu-item>
-        <el-menu-item index="/prodoct/categorylist">产品类别</el-menu-item>
+      </el-sub-menu>
+      <el-sub-menu index="/category">
+        <template #title>
+          <el-icon><Menu/></el-icon>
+          <span>类别管理</span></template>
+        <el-menu-item index="/cates/addcates">添加类别</el-menu-item>
+        <el-menu-item index="/cates/cateslist">类别列表</el-menu-item>
+      </el-sub-menu>
+      <el-sub-menu index="/page">
+        <template #title>
+          <el-icon><Menu/></el-icon>
+          <span>优化管理</span></template>
+        <el-menu-item index="/page/pagelist">页面关键词设置</el-menu-item>
       </el-sub-menu>
     </el-menu>
   </el-aside>

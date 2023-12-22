@@ -16,10 +16,9 @@
 <script setup> 
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import { onBeforeUnmount, ref, shallowRef, onMounted,defineEmits,defineProps, watchEffect,watch,reactive} from 'vue'
-import { Editor, Toolbar  } from '@wangeditor/editor-for-vue'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import axios from "axios";
 import upload from '../../../util/upload'
-
 const emit = defineEmits(['event'])
 const props = defineProps({
   content:String
@@ -41,14 +40,9 @@ const props = defineProps({
       // props.content && valueHtml(props.content)
      
     })
-    const toolbarConfig = {
-      excludeKeys: [//隐藏的toolbarKey,默认为空
-          "emotion",
-          "group-video"
-        ]
-
+    const toolbarConfig = { 
+      excludeKeys:["group-video","emotion"]
     }
-
     const editorConfig = { 
       placeholder: '请输入内容...',
       MENU_CONF: {
@@ -68,7 +62,7 @@ const props = defineProps({
             const res = await upload('/admin/editupload',imgForm)
             const result = res.data.data.data
             const url = `http://localhost:3000/` + result.url
-            insertFn(url, result.alt,url)
+            insertFn(url, result.alt,result.href)
     }
           }
       }
