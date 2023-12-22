@@ -18,6 +18,13 @@ const ProController = {
       data:result
     })
   },
+  getProc:async (req, res) => {
+    console.log(req)
+    const result = await  ProService.getProBycid(req)
+    res.send({
+      data:result
+    })
+  },
   edit:async (req, res) => {
     const result = await  ProService.editPro({req})
     res.send({

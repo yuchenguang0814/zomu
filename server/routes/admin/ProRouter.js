@@ -5,6 +5,7 @@ const multer = require('multer');
 const proUploads = multer({dest: 'public/proUploads/'})
 ProRouter.get('/admin/pro/getPros',ProController.get)
 ProRouter.get('/admin/pro/getPros/:id',ProController.get)
+ProRouter.get('/admin/pro/getProsByCid/:id',ProController.getProc)
 ProRouter.get('/admin/pro/category',ProController.getCategory)
 ProRouter.post('/admin/pro/addpro',proUploads.single('file'),ProController.add)
 ProRouter.post('/admin/pro/getPros',proUploads.single('file'),ProController.edit)

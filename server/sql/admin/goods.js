@@ -17,8 +17,32 @@ const getGoods = (req)=>{
   // }
   const _id = req.id 
   let where = '1 = 1'
+
   if(_id) {
     where = where + ' and goods.id =' + _id
+  }
+  let sql = `SELECT * FROM goods Where ${where} ORDER BY sort`
+  return exec(sql);
+}
+const getGoodsBycid = (req)=>{
+  // if(req.query != '') {
+  //   const page = req.query.pagenum
+  //   const size = req.query.pagesize
+  //   const offset = (page-1)*size
+  //   let where = '1 = 1'
+  //   if(req.query.query != '') {
+  //     const obj = JSON.parse(req.query.query)
+  //     if(obj.cid) {
+  //       where = where + ' and goods.c_id =' + obj.cid
+  //     }
+  //   }
+  //   let sql = `SELECT * FROM goods Where ${where} ORDER BY sort limit ${offset},${size}`
+  //   return exec(sql);
+  // }
+  const _id = req.id 
+  let where = '1 = 1'
+  if(_id && _id !== 'all') {
+    where = where + ' and goods.c_id =' + _id
   }
   let sql = `SELECT * FROM goods Where ${where} ORDER BY sort`
   return exec(sql);
@@ -73,5 +97,6 @@ module.exports ={
   editGoodById,
   removeGoodById,
   editPublish,
-  editHome
+  editHome,
+  getGoodsBycid
 }
