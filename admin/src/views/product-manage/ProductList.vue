@@ -47,23 +47,6 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-dialog v-model="dialogVisible" title="预览案例" width="50%" draggable>
-          <div>
-            <el-image style="width: 100%;" :src="`${publicPath }` + previewDate.imgurl"  />
-            <h2>{{previewDate.title}}</h2>
-            <span style="font-size:14px;color:#333"> {{ formatTime.getTime(previewDate.createtime) }}</span>
-            <span style="font-size:14px;color:#333">{{previewDate.author}}</span>
-            <el-divider>
-        <el-icon><star-filled /></el-icon>
-      </el-divider>
-      <div v-html="previewDate.content" class="htmlContent"></div>
-          </div>
-          <template #footer>
-            <span class="dialog-footer">
-              <el-button @click="dialogVisible = false">取消</el-button>
-            </span>
-          </template>
-        </el-dialog>
       </el-card>
     </div>
   </template>
@@ -85,7 +68,6 @@
   const getTableData = async () => {
     const result = await axios.get('/admin/pro/getPros')
     tableDate.value = result.data.data.data
-    console.log(tableDate.value)
   }
   const handlePreview = (data) => {
     previewDate.value = data

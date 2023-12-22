@@ -5,18 +5,26 @@ const addQusetions = (data)=>{
   return exec(sql);
 }
 const getOrdersList = (req)=>{
-  const page = req.pagenum
-  const size = req.pagesize
-  const offset = (page-1)*size
-  const obj = JSON.parse(req.query)
-  let where = 'where 1 = 1'
-  if (obj.id === -1) {
-    where = where + ' and isQusetion = 1 or isQusetion = 2'
-  } else {
-    where = where + ` and isQusetion = ${obj.id}`
+  // const page = req.pagenum
+  // const size = req.pagesize
+  // const offset = (page-1)*size
+  // const obj = JSON.parse(req.query)
+  const _id = req.id 
+  let where = '1 = 1'
+  if(_id) {
+    where = where + ' and orders.id =' + _id
   }
-  let sql = `SELECT * FROM orders ${where} ORDER BY createtime DESC limit ${offset},${size}`
+  let sql = `SELECT * FROM orders Where ${where} ORDER BY createtime DESC`
+  console.log(sql)
   return exec(sql);
+  // let where = 'where 1 = 1'
+  // if (obj.id === -1) {
+  //   where = where + ' and isQusetion = 1 or isQusetion = 2'
+  // } else {
+  //   where = where + ` and isQusetion = ${obj.id}`
+  // }
+  // let sql = `SELECT * FROM orders ${where} ORDER BY createtime DESC limit ${offset},${size}`
+  // return exec(sql);
 }
 const getTotal = (req)=>{
   const obj = JSON.parse(req.query)
@@ -30,7 +38,7 @@ const getTotal = (req)=>{
   return exec(sql);
 }
 const removeOrderById = (req) => {
-  let sql = `DELETE FROM orders WHERE id = ${req}` 
+  let sql = `DELETE FROM orders WHERE id = ${req.params.id}` 
   return exec(sql);
 }
 const getOrderById = (req) => {
