@@ -43,11 +43,12 @@
       <el-alert show-icon title="请插入样品图和输入应用范围" type="warning" :closable="false" class="key_alert"></el-alert>
       <el-form-item label="适用范围" prop="advantage">
         <Editor @event="editorAdvantageHandleChange" :content="proForm.advantage" v-if="proForm.advantage"/>
-        <!-- <Editor @event="editorAdvantageHandleChange" content="" v-else/> -->
+        <Editor @event="editorAdvantageHandleChange" content="" v-else/>
       </el-form-item>
       <el-alert show-icon title="插入技术参数表格" type="warning" :closable="false" class="key_alert"></el-alert>
       <el-form-item label="技术参数" prop="content">
         <Editor @event="editorContentHandleChange" :content="proForm.content" v-if="proForm.content"/>
+        <Editor @event="editorContentHandleChange" content="" v-else/>
       </el-form-item>
 
       <el-alert show-icon title="为了更好的优化，请填写下面这些信息" type="warning" :closable="false" class="key_alert"></el-alert>
@@ -128,8 +129,6 @@ onMounted(async () => {
   Object.assign(proForm,result.data.data.data[0])
   getCategory()
   isShowEdit.value = true
-  console.log(proForm)
-  
 })
 </script>
 <style scoped>

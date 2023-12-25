@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-card><el-page-header content="添加案例" icon="" title="案例管理">
+    <el-card><el-page-header content="添加产品" icon="" title="产品管理">
     </el-page-header></el-card>
    <el-form
       ref="proFormRef"

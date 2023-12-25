@@ -1,7 +1,7 @@
 // const { addNews,getNewsList,editPublish,removeNewById,editNewById } = require("../../sql/admin/news");
 const { getGoodsCate } = require("../../sql/admin/goodsCate")
 const { addGoods } = require("../../sql/admin/addGoods")
-const { getGoods, removeGoodById, editPublish, editHome, editGoodById } = require("../../sql/admin/goods")
+const { getGoods, removeGoodById, editPublish, editHome, editGoodById,getGoodsBycid } = require("../../sql/admin/goods")
 const ProService = {
   getCate:async (req) => {
     const result = {
@@ -90,6 +90,28 @@ const ProService = {
       })
     }
     
+  },
+  
+  getProBycid:async (req) => {
+    const result = {
+      code: null,
+      message: '',
+      data: ''
+    }
+      return getGoodsBycid(req.params).then(res => {
+        if (res.length === 0) {
+          result.code = 201
+          result.message = '获取产品列表失败'
+          return result
+        } else {
+          result.code = 200
+          result.message = '获取产品列表成功'
+          result.data = JSON.parse(JSON.stringify(res))
+          return result
+        }
+      })
+
+      
   },
   publish:async (req) => {
     const result = {

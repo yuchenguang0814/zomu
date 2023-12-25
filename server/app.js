@@ -9,7 +9,12 @@ const JWT = require('./util/JWT');
 const UploadRouter = require('./routes/admin/Upload');
 const NewRouter = require('./routes/admin/NewRouter');
 const ProRouter = require('./routes/admin/ProRouter');
+<<<<<<< HEAD
 const EmailRouter = require('./routes/email');
+=======
+const CateRouter = require('./routes/admin/CateRouter');
+const OrderRouter = require('./routes/admin/OrderRouter');
+>>>>>>> 902b1ae3db385ff583d9f5235d4787181f74b5f3
 
 var app = express();
 
@@ -53,8 +58,13 @@ app.use(UserRouter)
 app.use(UploadRouter)
 app.use(NewRouter)
 app.use(ProRouter)
+<<<<<<< HEAD
 app.use(EmailRouter)
 
+=======
+app.use(CateRouter)
+app.use(OrderRouter)
+>>>>>>> 902b1ae3db385ff583d9f5235d4787181f74b5f3
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

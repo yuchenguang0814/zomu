@@ -13,6 +13,7 @@ import CateList from '../views/cate-manage/CateList.vue'
 import CateEdit from '../views/cate-manage/CateEdit.vue'
 import pageList from '../views/page-manage/PageList.vue'
 import PageEdit from '../views/page-manage/PageEdit.vue'
+import OrderList from '../views/order-manage/OrderList.vue'
 import NotFound from '../views/notfound/NotFound.vue'
 
 const routes = [
@@ -75,6 +76,10 @@ const routes = [
   {
     path: '/prodoct/editpros/:id',
     component: ProEdit
+  },
+  {
+    path: '/order/orderlist',
+    component: OrderList
   },
   {
     path: '/',
