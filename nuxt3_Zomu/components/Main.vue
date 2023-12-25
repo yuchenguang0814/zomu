@@ -22,130 +22,22 @@
 			</div>
 		</nav>
 		<div class="tabscontent">
-			<div class="tabscontent__item tab_item_01">
-				<figure class="poster">
-					<img class="poster__img" src="/images/img1.jpg" alt="Poster 1" />
-					<figcaption class="poster__caption">
-						<h2 class="poster__title">Products</h2>
-						<p class="poster__deco">Zomukikai is a leading manufacturer of specialized packaging solutions for the food, beauty, 
-							and pharmaceutical industries.</p>
-						<div class="poster__box">
-							<ul class="in-pro-list">
-								<li class="pro-hover">
-									<a href="product_show.html">
-										<img src="/images/pro.jpg" alt="产品名称">
-										<span>Vertical Pillow Bag Packing Machine for Snack </span>
-									</a>
-								</li>
-								<li>
-									
-									<a href="product_show.html"> 
-										<img src="/images/pro.jpg" alt="产品名称">
-										<span>Vertical Pillow Bag Packing Machine for Snack </span>
-									</a>
-								</li>
-								<li>
-									
-									<a href="product_show.html">
-										<img src="/images/pro.jpg" alt="产品名称">
-										<span>Vertical Pillow Bag Packing Machine for Snack </span>
-									</a>
-								</li>
-								<li>
-									
-									<a href="product_show.html">
-										<img src="/images/pro.jpg" alt="产品名称">
-										<span>Vertical Pillow Bag Packing Machine for Snack </span>
-									</a>
-								</li>
-							</ul>
-						</div>
-						<!-- <span class="poster__number">02</span> -->
-					</figcaption>
-				</figure>
-			</div>
-			<div class="tabscontent__item tab_item_02">
-				<figure class="poster">
-					<img class="poster__img" src="/images/img1.jpg" alt="Poster 1" />
-					<figcaption class="poster__caption">
-						<h2 class="poster__title">who we are</h2>
-						<p class="poster__deco">Zomukikai is a leading manufacturer of specialized packaging solutions for the food, beauty, and pharmaceutical industries. With a wealth of experience in the packaging industry, the company is dedicated to providing customers with a comprehensive range of high-quality packaging machines.</p>
-						<button class="tab_item_btn"><a href="about.html">MORE</a></button>
-						<div class="poster__box">
-							<img src="/images/in-about.jpg" alt="" class="tab_item_02_img">
-						</div>
-						
-					</figcaption>
-				</figure>
-			</div>
-			<div class="tabscontent__item light">
-				<figure class="poster">
-					<img class="poster__img" src="/images/img3.jpg" alt="Poster 1" />
-					<figcaption class="poster__caption">
-						<h2 class="poster__title">contact us</h2>
-						<p class="poster__deco">Great！ you are finally hear！ let’s talk business. </p>
-						<div class="poster__box">
-							<div id="gallery">
-            <figure>
-                <div>
-                    <div>
-											<div class="icon">
-												<span style="background-image:url(./images/con_mes.png);"></span>
-											</div>
-                        <h2>Give Us A Call</h2>
-                        <p><small>24 HOURS, 7 DAYS A WEEK</small></p>
-                    </div>
-                </div>
-            </figure>
-						<figure>
-							<div>
-									<div>
-										<div class="icon">
-											<span style="background-image:url(./images/con_e.png);"></span>
-										</div>
-											<h2>Email</h2>
-											<p><small><a rel="nofollow" href="mailto:sales@zomukikai.com">sales@zomukikai.com</a></small></p>
-									</div>
-							</div>
-					</figure>
-					<figure>
-						<div>
-								<div>
-									<div class="icon">
-										<span style="background-image:url(./images/con_a.png);"></span>
-									</div>
-										<h2>ADD</h2>
-										<p><small>No.28 Yantan Middle Road, Ruian, Zhejiang Province, China</small></p>
-								</div>
-						</div>
-				</figure>
-            <figure>
-                <img src="/images/1.jpg">
-                <figcaption><a rel="nofollow" href="tel:+ 86-13515776936">+ 86-13515776936</a></figcaption>
-            </figure>
-						<figure>
-							<img src="/images/1.jpg">
-							<figcaption><a rel="nofollow" href="tel:+ 86-13515776936">+ 86-13515776936</a></figcaption>
-					</figure>
-					 <figure>
-                <img src="/images/1.jpg">
-                <figcaption><a rel="nofollow" href="tel:+ 86-13515776936">+ 86-13515776936</a></figcaption>
-            </figure>
-						<figure>
-							<img src="/images/1.jpg">
-							<figcaption><a rel="nofollow" href="tel:+ 86-13515776936">+ 86-13515776936</a></figcaption>
-					</figure>
-        </div>
-						</div>
-					</figcaption>
-				</figure>
-			</div>
-			
+			<Tabscontent01></Tabscontent01>
+			<Tabscontent02></Tabscontent02>
+			<Tabscontent03></Tabscontent03>
 		</div>
 	</main>
 </template>
 <script>
+import Tabscontent01 from './tabscontent/Tabscontent01.vue'
+import Tabscontent02 from './tabscontent/Tabscontent02.vue'
+import Tabscontent03 from './tabscontent/Tabscontent03.vue'
 export default {
+	components: {
+		Tabscontent01,
+		Tabscontent02,
+		Tabscontent03
+	},
 	created(){
     if (process.browser) { 
      	
@@ -341,3 +233,10 @@ export default {
 }
  
 </script>
+<style>
+.logo img {
+	height: 3em;
+	max-width: 300px;
+	max-height: 50px;
+}
+</style>

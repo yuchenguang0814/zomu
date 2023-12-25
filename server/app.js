@@ -9,6 +9,7 @@ const JWT = require('./util/JWT');
 const UploadRouter = require('./routes/admin/Upload');
 const NewRouter = require('./routes/admin/NewRouter');
 const ProRouter = require('./routes/admin/ProRouter');
+const EmailRouter = require('./routes/email');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use(UserRouter)
 app.use(UploadRouter)
 app.use(NewRouter)
 app.use(ProRouter)
+app.use(EmailRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

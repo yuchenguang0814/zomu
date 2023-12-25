@@ -26,156 +26,27 @@
 						<a href="/">HOME</a>
 					</li>
 					<li>
-						<a href="/about.html">ABOUT</a>
+						<a href="/about">ABOUT</a>
 					</li>
 					<li>
-						<a href="/products.html">PRODUCT</a>
+						<a href="/products">PRODUCT</a>
 					</li>
 					<li>
-						<a href="/contact.html">CONTACT</a>
+						<a href="/contact">CONTACT</a>
 					</li>
 					
 					<button class="btn btn--back"><svg class="icon icon--caret">
 						<use xlink:href="#icon-caret"></use>
 					</svg></button>
-					<button class="header_right_btn">
-						<span class="header_right_btn_bar">
-							<span class="header_right_btn_bar_inner"></span>
-						</span>
-						<span class="header_right_btn_bar">
-							<span class="header_right_btn_bar_inner"></span>
-						</span>
-						<span class="header_right_btn_bar">
-							<span class="header_right_btn_bar_inner"></span>
-						</span>
-						<span class="header_right_btn_bar">
-							<span class="header_right_btn_bar_inner"></span>
-						</span>
-						<span class="header_right_btn_bar">
-							<span class="header_right_btn_bar_inner"></span>
-						</span>
-						<span class="header_right_btn_bar">
-							<span class="header_right_btn_bar_inner"></span>
-						</span>
-					</button>
+					<HeaderRightBtn></HeaderRightBtn>
 				</ul>
 			</nav>
 		</div>
 	</div>
-	<nav id="Nav">
-		<div class="nav_head">
-			<div class="nav_head_inner container-wide">
-				<a class="header_logo" href="/">
-					<img src="/images/2fuben.png" alt="">
-				</a>
-				<button class="NavClose">
-					<div class="btn-close_bar"></div>
-					<div class="btn-close_bar"></div>
-				</button>
-			</div>
-		</div>
-		<div class="nav_inner">
-			<div class="nav_scroll container">
-				<div class="nav_body">
-					<div class="nav_body_left">
-						<ul class="nav_list">
-							<li class="nav_list_item is-current">
-								<a href="/" class="nav_list_link">
-									Home
-								</a>
-								<div class="nav_list_bar_block">
-									<div class="nav_list_bar">
-										<div class="nav_list_bar_inner"></div>
-									</div>
-								</div>
-							</li>
-							<li class="nav_list_item">
-								<a href="./about.html" class="nav_list_link">
-									About
-								</a>
-								<div class="nav_list_bar_block">
-									<div class="nav_list_bar">
-										<div class="nav_list_bar_inner"></div>
-									</div>
-								</div>
-							</li>
-							<li class="nav_list_item">
-								<a href="./products.html" class="nav_list_link">
-									Products
-								</a>
-								<div class="nav_list_bar_block">
-									<div class="nav_list_bar">
-										<div class="nav_list_bar_inner"></div>
-									</div>
-								</div>
-							</li>
-
-							<li class="nav_list_item">
-								<a href="./contact.html" class="nav_list_link">
-									Contact
-								</a>
-								<div class="nav_list_bar_block">
-									<div class="nav_list_bar">
-										<div class="nav_list_bar_inner"></div>
-									</div>
-								</div>
-							</li>
-
-						</ul>
-					</div>
-				</div>
-				<div class="nav_foot">
-					<div class="nav_foot_left">
-						<ul class="nav_list-social">
-							<li class="nav_list-social_item">
-								<a href="" class="nav_list-social_block">
-									<div class="nav_list-social_icon_mask">
-										<div class="nav_list-social_icon">
-											<svg class="-fb" viewBox="0 0 14.9 29.6">
-												<use href="#ShapeFb"></use>
-											</svg>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li class="nav_list-social_item">
-								<a href="" class="nav_list-social_block">
-									<div class="nav_list-social_icon_mask">
-										<div class="nav_list-social_icon">
-											<svg class="-tw" viewBox="0 0 27.8 22.6">
-												<use href="#ShapeTw"></use>
-											</svg>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li class="nav_list-social_item">
-								<a href="" class="nav_list-social_block">
-									<div class="nav_list-social_icon_mask">
-										<div class="nav_list-social_icon">
-											<svg class="-pt" viewBox="0 0 24.8 30.6">
-												<use href="#ShapePt"></use>
-											</svg>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li class="nav_list-social_item">
-								<a href="" class="nav_list-social_block">
-									<div class="nav_list-social_icon_mask">
-										<div class="nav_list-social_icon">
-											<svg class="-insta" viewBox="0 0 30 30">
-												<use href="#ShapeInsta"></use>
-											</svg>
-										</div>
-									</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="nav_bg"></div>
-	</nav>
+	<HeaderNav></HeaderNav>
 </template>
+<script setup>
+import HeaderRightBtn from './headerbtn/headerRightBtn.vue'
+import HeaderNav from './headerbtn/headerNav.vue'
+
+</script>
