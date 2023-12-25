@@ -1,4 +1,7 @@
 <template>
+	 <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+		<symbol id="ShapeSearch" viewBox="0 0 20.7 20.7"> <circle cx="8.2" cy="8.2" r="7.2"></circle> <line x1="13.3" y1="13.3" x2="20" y2="20"></line> </symbol>
+	</svg>
   <nav id="Nav">
 		<div class="nav_head">
 			<div class="nav_head_inner container-wide">
@@ -59,6 +62,25 @@
 							</li>
 
 						</ul>
+					</div>
+					<div class="nav_body_right">
+						<div class="nav_body_right_item">
+							<div class="nav_search_form">
+                <form action="">
+                  <div class="nav_search_form_mask">
+                    <div class="nav_search_form_mask_inner">
+                      <label for="NavSearchInput" class="nav_search_label">
+                        <input type="text" class="nav_search_input" placeholder="Search">
+                      </label>
+                      <button class="search_results_main_body_btn" type="submit">
+                        <svg viewBox="0 0 20.7 20.7"> <use href="#ShapeSearch"></use></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="nav_search_form_bar" style="transform: rotate(0.0001deg);"></div>
+                </form>
+              </div>
+						</div>
 					</div>
 				</div>
 				<div class="nav_foot">

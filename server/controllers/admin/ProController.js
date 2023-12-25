@@ -19,7 +19,6 @@ const ProController = {
     })
   },
   getProc:async (req, res) => {
-    console.log(req)
     const result = await  ProService.getProBycid(req)
     res.send({
       data:result

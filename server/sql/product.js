@@ -14,8 +14,13 @@ const getAllGood = () => {
   let sql = `SELECT * FROM goods`
   return exec(sql)
 }
+const getProductIsHome = (req) => {
+  let sql = `SELECT * FROM goods where isHome = 1 ORDER BY sort`
+  return exec(sql)
+} 
 module.exports = {
   getProductsByCid,
   getProduct,
-  getAllGood
+  getAllGood,
+  getProductIsHome
 }

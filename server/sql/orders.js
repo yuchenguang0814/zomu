@@ -15,7 +15,6 @@ const getOrdersList = (req)=>{
     where = where + ' and orders.id =' + _id
   }
   let sql = `SELECT * FROM orders Where ${where} ORDER BY createtime DESC`
-  console.log(sql)
   return exec(sql);
   // let where = 'where 1 = 1'
   // if (obj.id === -1) {

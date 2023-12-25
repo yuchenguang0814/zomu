@@ -9,12 +9,10 @@ const JWT = require('./util/JWT');
 const UploadRouter = require('./routes/admin/Upload');
 const NewRouter = require('./routes/admin/NewRouter');
 const ProRouter = require('./routes/admin/ProRouter');
-<<<<<<< HEAD
 const EmailRouter = require('./routes/email');
-=======
 const CateRouter = require('./routes/admin/CateRouter');
 const OrderRouter = require('./routes/admin/OrderRouter');
->>>>>>> 902b1ae3db385ff583d9f5235d4787181f74b5f3
+const WebProRouter = require('./routes/web/WebProRouter');
 
 var app = express();
 
@@ -27,6 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(WebProRouter)
+
+
 // 中间件
 app.use((req, res, next) => {
   if(req.url === '/admin/login') {
@@ -52,19 +53,14 @@ app.use((req, res, next) => {
     next()
   }
 })
-
 // app.use('/admin/users', usersRouter);
 app.use(UserRouter)
 app.use(UploadRouter)
 app.use(NewRouter)
 app.use(ProRouter)
-<<<<<<< HEAD
 app.use(EmailRouter)
-
-=======
 app.use(CateRouter)
 app.use(OrderRouter)
->>>>>>> 902b1ae3db385ff583d9f5235d4787181f74b5f3
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -2,7 +2,6 @@ const { exec} = require('../../db/mysql');
 
 const getGoodsCate = ()=>{
   let sql = `SELECT * FROM category WHERE pageId = 1 ORDER BY pagePath`
-  console.log(sql)
   return exec(sql);
 }
 
@@ -26,7 +25,6 @@ const editGoodById = (req) => {
   }
 }
 const removeCateById = (req) => {
-  console.log(req)
   let sql = `DELETE FROM category WHERE cid = ${req.params.id}`  
   return exec(sql);
 }

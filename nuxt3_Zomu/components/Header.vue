@@ -1,6 +1,5 @@
 <template>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
-		<symbol id="ShapeSearch" viewBox="0 0 20.7 20.7"> <circle cx="8.2" cy="8.2" r="7.2"></circle> <line x1="13.3" y1="13.3" x2="20" y2="20"></line> </symbol>
 		<symbol id="ShapeArrowExternal" viewBox="0 0 19.4 20.1"> <path d="M3.2,3.4h13.2v13.2"></path> <line x1="16.7" y1="3" x2="2.7" y2="17.1"></line> </symbol>
 		<symbol id="ShapeFb" viewBox="0 0 14.9 29.6"> <path d="M3.2,5.7c0-0.2,0-0.6,0.1-1.2C3.4,3.9,3.6,3.3,4,2.6c0.4-0.7,1.1-1.3,2-1.8C6.9,0.3,8.2,0,10,0h4.9v5.3h-3.6 c-0.4,0-0.7,0.1-1,0.4C10,6,9.9,6.2,9.9,6.5v3.3h5c-0.1,0.6-0.1,1.3-0.2,1.9l-0.2,1.6c-0.1,0.5-0.2,1-0.2,1.5H9.8v14.8H3.2V14.8H0 v-5h3.2V5.7z"></path> </symbol>
 		<symbol id="ShapeTw" viewBox="0 0 27.8 22.6"> <path d="M27.8,2.7c-1,0.5-2.1,0.8-3.3,0.9c1.2-0.7,2.1-1.8,2.5-3.2c-1.1,0.7-2.3,1.1-3.6,1.4c-1-1.1-2.5-1.8-4.2-1.8 c-3.2,0-5.7,2.6-5.7,5.7c0,0.4,0.1,0.9,0.1,1.3C9,6.8,4.8,4.5,1.9,1C1.4,1.9,1.2,2.9,1.2,3.9c0,2,1,3.7,2.5,4.8 C2.8,8.6,1.9,8.4,1.1,8V8c0,2.8,2,5.1,4.6,5.6c-0.5,0.1-1,0.2-1.5,0.2c-0.4,0-0.7,0-1.1-0.1c0.7,2.3,2.8,3.9,5.3,4 c-2,1.5-4.4,2.4-7.1,2.4c-0.5,0-0.9,0-1.4-0.1c2.5,1.6,5.5,2.6,8.8,2.6C19.3,22.6,25,13.9,25,6.4l0-0.7 C26.1,4.8,27.1,3.8,27.8,2.7z"></path> </symbol>
@@ -48,5 +47,6 @@
 <script setup>
 import HeaderRightBtn from './headerbtn/headerRightBtn.vue'
 import HeaderNav from './headerbtn/headerNav.vue'
+import axios from 'axios';
 
 </script>
