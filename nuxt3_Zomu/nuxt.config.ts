@@ -3,6 +3,21 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   devServer: {port: 4000},
   ssr: true,
+  nitro: {
+    devProxy: {
+        '/web': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            prependPath: true
+        },
+    },
+    // 该配置用于服务端请求转发
+    routeRules: {
+      '/apis/**': {
+        proxy: 'http://localhost:3000/'
+      }
+    }
+},
   app: {
     head: {
       link: [
