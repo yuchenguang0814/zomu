@@ -6,7 +6,8 @@ const getProductsByCid = (req) => {
   return exec(sql)
 } 
 const getProduct = (req) => {
-  const id = req.query.id
+  const id = req.params.id
+  console.log(id)
   let sql = `SELECT * FROM goods where id = ${id}`
   return exec(sql)
 } 

@@ -52,8 +52,8 @@
     </el-divider>
 
         <ul style="display:flex;flex-wrap: wrap;list-style-type: none;">
-          <li> <el-button type="primary" style="width: 80px; height: 30px; line-height: 20px;font-size: 16px;" @click="handleCategory('all')">全部</el-button></li>
-          <li v-for="item in cateList" style="width: 15%; margin-left:1.5%;margin-bottom: 10px;" v-if="cateList">
+          <li> <el-button type="primary" style="width: 80px; height: 30px;margin-right:20px; line-height: 20px;font-size: 16px;" @click="handleCategory('all')">全部</el-button></li>
+          <li v-for="item in cateList" style="margin-right:20px;margin-bottom: 10px;" v-if="cateList">
             <el-button type="primary" style="width: 100%; height: 30px; line-height: 20px;font-size: 16px;" @click="handleCategory(item.cid)">{{item.pageName}}</el-button>
           </li>
         </ul>
@@ -97,6 +97,13 @@
     const result = res.data.data
     if (result.code !== 200) return ElMessage.error(result.message)
     ElMessage.success(result.message)
+    if(item.isHome === 1) {
+      const res = await axios.put('/admin/pro/home', {
+      _id: item.id,
+      isHome: 0
+    })
+      getTableData()
+    }
   }
   const handleHomeSwitchChange = async (item) => {
     const res = await axios.put('/admin/pro/home', {
@@ -106,6 +113,13 @@
     const result = res.data.data
     if (result.code !== 200) return ElMessage.error(result.message)
     ElMessage.success(result.message)
+    if(item.isPublish === 0) {
+      const res = await axios.put('/admin/pro/publish', {
+        _id: item.id,
+        isPublish: 1
+      })
+      getTableData()
+    }
   }
   const handleDelete = async (item) => {
     const res = await axios.delete(`/admin/pro/delete/${item.id}`)

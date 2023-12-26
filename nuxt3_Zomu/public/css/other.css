@@ -368,7 +368,11 @@
     div#ipresenter div#intro {
         width: 10rem;
     }
-    
+    .page-ipre {
+        position: absolute;
+        left: -10%;
+        top: 0%
+    }
     div#ipresenter div#intro img {
         float: left;
     }

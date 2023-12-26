@@ -9,20 +9,20 @@
       label-width="120px"
       class="demo-ruleForm"
     >
-      <el-form-item label="产品名称" catep="pageName">
+      <el-form-item label="产品名称" prop="pageName">
         <el-input v-model="cateForm.pageName"></el-input>
       </el-form-item>
-      <el-form-item label="产品序号" catep="pagePath">
+      <el-form-item label="产品序号" prop="pagePath">
           <el-input-number v-model="cateForm.pagePath" :min="1"  controls-position="right" size="small"/>
       </el-form-item>
-      <el-form-item label="产品图片" catep="pageImage">
+      <el-form-item label="产品图片" prop="pageImage">
         <Upload :logo="cateForm.pageImage" @kerwinchange = "handleChange" />
       </el-form-item>
       <el-alert show-icon title="为了更好的优化，请填写下面这些信息" type="warning" :closable="false" class="key_alert"></el-alert>
-      <el-form-item label="关键词" catep="pageKey">
+      <el-form-item label="关键词" prop="pageKey">
         <el-input v-model="cateForm.pageKey"></el-input>
       </el-form-item>
-      <el-form-item label="关键词描述" catep="pageDescription">
+      <el-form-item label="关键词描述" prop="pageDescription">
         <el-input v-model="cateForm.pageDescription" type="textarea" style="min-height: 80px;"></el-input>
       </el-form-item>
       <el-button type="primary" @click="addcate()" style="margin: 0 auto;display: block;">更新分类</el-button>

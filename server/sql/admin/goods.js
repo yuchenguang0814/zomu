@@ -67,12 +67,15 @@ const getGoodById = (req) => {
   return exec(sql);
 }
 const editGoodById = (req) => {
+  const pageDescription = req.body.pageDescription.replace(/\'/g, "''")
+  const overView =  req.body.overView.replace(/\'/g, "''")
+  const advantage = req.body.advantage.replace(/\'/g, "''")
   if(req.file) {
     const path = `/proUploads/${req.file.filename}`
-    let sql = `UPDATE goods SET c_id = '${req.body.c_id}',image = '${path}',name = '${req.body.name}',overView = '${req.body.overView}',advantage = '${req.body.advantage}',content = '${req.body.content}',pageKey = '${req.body.pageKey}',pageDescription = '${req.body.pageDescription}',add_time = NOW(),sort = ${req.body.sort},vidurl = '${req.body.vidurl}' WHERE id = ${req.body.id}`
+    let sql = `UPDATE goods SET c_id = '${req.body.c_id}',image = '${path}',name = '${req.body.name}',overView = '${overView}',advantage = '${advantage}',content = '${req.body.content}',pageKey = '${req.body.pageKey}',pageDescription = '${pageDescription}',add_time = NOW(),sort = ${req.body.sort},vidurl = '${req.body.vidurl}' WHERE id = ${req.body.id}`
     return exec(sql);
   } else {
-    let sql = `UPDATE goods SET c_id = '${req.body.c_id}',name = '${req.body.name}',overView = '${req.body.overView}',advantage = '${req.body.advantage}',content = '${req.body.content}',pageKey = '${req.body.pageKey}',pageDescription = '${req.body.pageDescription}',add_time = NOW(),sort = ${req.body.sort},vidurl = '${req.body.vidurl}' WHERE id = ${req.body.id}`
+    let sql = `UPDATE goods SET c_id = '${req.body.c_id}',name = '${req.body.name}',overView = '${overView}',advantage = '${advantage}',content = '${req.body.content}',pageKey = '${req.body.pageKey}',pageDescription = '${pageDescription}',add_time = NOW(),sort = ${req.body.sort},vidurl = '${req.body.vidurl}' WHERE id = ${req.body.id}`
     return exec(sql);
   }
  

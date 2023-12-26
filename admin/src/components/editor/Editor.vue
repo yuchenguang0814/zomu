@@ -15,7 +15,7 @@
 </template>
 <script setup> 
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
-import { onBeforeUnmount, ref, shallowRef, onMounted,defineEmits,defineProps, watchEffect,watch,reactive} from 'vue'
+import { onBeforeUnmount, ref, shallowRef, onMounted,defineEmits,defineProps, watchEffect,watch,reactive,nextTick } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import axios from "axios";
 import upload from '../../../util/upload'
@@ -35,10 +35,10 @@ const props = defineProps({
     watch(valueHtml, (editor)=>{
       emit('event',editor)
     })
-    // 模拟 ajax 异步获取内容
-    onMounted(() => {
-      // props.content && valueHtml(props.content)
-     
+    nextTick(()=>{
+      setTimeout(() => {
+        valueHtml.value =  props.content
+      }, 200);
     })
     const toolbarConfig = { 
       excludeKeys:["group-video","emotion"]

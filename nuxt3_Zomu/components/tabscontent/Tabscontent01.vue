@@ -8,11 +8,15 @@
 							and pharmaceutical industries.</p>
 						<div class="poster__box">
 							<ul class="in-pro-list">
-								<li class="pro-hover" v-for="item in data.data.data">
-									<a href="product_show.html">
+								<li class="pro-hover" 
+								v-for="item in data.data.data"
+								:key="item.id"
+								
+								>
+								<nuxt-link :to="`/product_show/${item.id}`">
 										<img :src="`${publicPath }` + item.image" :alt= item.name>
 										<span>{{item.name}}</span>
-									</a>
+								</nuxt-link>
 								</li>
 							</ul>
 						</div>
