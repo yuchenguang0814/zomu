@@ -28,7 +28,7 @@
 						<a href="/about">ABOUT</a>
 					</li>
 					<li>
-						<a href="/products">PRODUCT</a>
+						<a href="/product/all">PRODUCT</a>
 					</li>
 					<li>
 						<a href="/contact">CONTACT</a>

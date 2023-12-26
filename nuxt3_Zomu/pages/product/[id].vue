@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <ProductShowMain />
+    <ProductMain />
   </div>
 </template>
 <script setup>

@@ -1,8 +1,16 @@
 <template>
-    <div class="o-nav">
-      <div class="p2 active">
-        <a href="products.html" class="toc__item">Rotary Premade Bag Packing Machine for Vacuuming Nuts
-        </a>
-      </div>
-    </div>
+    <div class="o-nav product">
+				<div :class="`p2 ${item.cid == props.content ? 'active' : ''}`"
+        v-for="item in data.data.data"
+        :key="item.cid"
+        ><a :href="`/product/${item.cid}`" class="toc__item"> {{ item.pageName  }} </a></div>
+			</div>
 </template>
+<script setup>
+import { defineProps } from 'vue'
+const props = defineProps({
+  content:String
+})
+const publicPath = 'http://localhost:3000'
+const { data } = await useFetch(publicPath + '/web/pro/getCategory', {method: 'get'})
+</script>

@@ -8,15 +8,14 @@
 							and pharmaceutical industries.</p>
 						<div class="poster__box">
 							<ul class="in-pro-list">
-								<li class="pro-hover" 
+								<li :class="isHover? 'pro-hover': ''" @mouseenter="toggleHover(true)" @mouseleave="toggleHover(false)" 
 								v-for="item in data.data.data"
 								:key="item.id"
-								
 								>
-								<nuxt-link :to="`/product_show/${item.id}`">
+								<a :href="`/product_show/${item.id}`">
 										<img :src="`${publicPath }` + item.image" :alt= item.name>
 										<span>{{item.name}}</span>
-								</nuxt-link>
+								</a>
 								</li>
 							</ul>
 						</div>
@@ -28,6 +27,12 @@
 
 
 <script setup>
+const isHover = false;
+const toggleHover = (value) => {
+	isHover = value
+}
 const publicPath = 'http://localhost:3000'
-const { data } = await useFetch('http://localhost:3000/web/pro/getProsByIshome', {method: 'get'})
+const { data } = await useFetch(publicPath + '/web/pro/getProsByIshome', {method: 'get'})
 </script>
+<style>
+</style>

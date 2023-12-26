@@ -47,8 +47,8 @@
       </el-form-item>
       <el-alert show-icon title="插入技术参数表格" type="warning" :closable="false" class="key_alert"></el-alert>
       <el-form-item label="技术参数" prop="content">
-        <Editor @event="editorContentHandleChange" :content="proForm.content" v-if="proForm.content"/>
-        <Editor @event="editorContentHandleChange" content="" v-else/>
+        <Editor02 @event="editorContentHandleChange" :content="proForm.content" v-if="proForm.content"/>
+        <Editor02 @event="editorContentHandleChange" content="" v-else/>
       </el-form-item>
 
       <el-alert show-icon title="为了更好的优化，请填写下面这些信息" type="warning" :closable="false" class="key_alert"></el-alert>
@@ -70,6 +70,7 @@ import {ref, reactive,onMounted} from 'vue'
 import upload from '../../../util/upload'
 import Upload from '../../components/upload/Upload'
 import Editor from '../../components/editor/Editor'
+import Editor02 from '../../components/editor/Editor02'
 import { ElMessage } from 'element-plus'
 import { useRouter, useRoute } from 'vue-router'
 import axios from 'axios';

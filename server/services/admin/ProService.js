@@ -110,8 +110,6 @@ const ProService = {
           return result
         }
       })
-
-      
   },
   publish:async (req) => {
     const result = {

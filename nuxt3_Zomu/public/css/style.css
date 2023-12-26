@@ -1492,6 +1492,7 @@ a {
 }
 .poster__box ul li img {
     width: 100%;
+    background-color: #fff;
 }
 .in-pro-hover-img {
     display: none;

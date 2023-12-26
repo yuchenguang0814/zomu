@@ -23,7 +23,6 @@ const editGoodById = (req) => {
     return exec(sql);
   } else {
     let sql = `UPDATE category SET pageName = '${req.body.pageName}',pagePath = '${req.body.pagePath}',pageDescription = '${pageDescription}',pageKey = '${req.body.pageKey}' WHERE cid = ${req.body.cid}`
-    console.log(sql)
     return exec(sql);
   }
 }

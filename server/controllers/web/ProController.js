@@ -20,7 +20,18 @@ const ProController = {
   },
   getProsByIshome:async (req, res) => {
     const result = await  ProService.getProIshome(req)
-    res.set('Access-Control-Allow-Origin', '*')
+    res.send({
+      data:result
+    })
+  },
+  getProc:async (req, res) => {
+    const result = await  ProService.getProBycid(req)
+    res.send({
+      data:result
+    })
+  },
+  getCate:async (req, res) => {
+    const result = await  ProService.getCateBycid(req)
     res.send({
       data:result
     })
