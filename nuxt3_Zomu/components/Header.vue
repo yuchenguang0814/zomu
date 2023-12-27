@@ -21,16 +21,16 @@
 			</div>
 			<nav>
 				<ul>
-					<li>
+					<li :class="`${props.content == 4 ? 'active': ''}`">
 						<a href="/">HOME</a>
 					</li>
-					<li>
+					<li :class="`${props.content == 5 ? 'active': ''}`">
 						<a href="/about">ABOUT</a>
 					</li>
-					<li>
+					<li :class="`${props.content == 1 ? 'active': ''}`">
 						<a href="/product/all">PRODUCT</a>
 					</li>
-					<li>
+					<li :class="`${props.content == 9 ? 'active': ''}`">
 						<a href="/contact">CONTACT</a>
 					</li>
 					
@@ -42,11 +42,13 @@
 			</nav>
 		</div>
 	</div>
-	<HeaderNav></HeaderNav>
+	<HeaderNav :content="props.content"></HeaderNav>
 </template>
 <script setup>
 import HeaderRightBtn from './headerbtn/headerRightBtn.vue'
 import HeaderNav from './headerbtn/headerNav.vue'
-import axios from 'axios';
-
+import { defineProps } from 'vue'
+const props = defineProps({
+  content:String
+})
 </script>

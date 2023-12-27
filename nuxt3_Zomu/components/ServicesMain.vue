@@ -1,0 +1,15 @@
+<template>
+  <main class="view">
+		<div class="v-content">
+			<img src="/images/img1.jpg" alt="" class="o-view-img">
+      <AboutSlide :content="3" />
+      <div class='content pages '>
+				<div class=" sitewidget-content"> <div class="sitewidget-hd"> <h2>Pre-sale Service</h2> </div> <div class="sitewidget-bd fix hasOverflowX "> <span style="color:#9d2933;"><span style="font-size:24px;"><i class="block-icon"><i class="fa"></i></i></span></span>&nbsp;Equipment model selection;&nbsp; <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>According to the special requirements of customers, personalized customized products;&nbsp;</div> <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Train technicians for customers free of charge;&nbsp;</div> <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Free professional technical engineers to plan the site on site and design the best process and plan.&nbsp;</div> <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Acceptance of the product;</div> </div> </div>
+				<div class=" sitewidget-content"> <div class="sitewidget-hd"> <h2>After-sales Service</h2> </div> <div class="sitewidget-bd fix hasOverflowX "> <span style="color:#9d2933;"><span style="font-size:24px;"><i class="block-icon"><i class="fa"></i></i></span></span>&nbsp;One Year Warranty, As long as there is a non-human fault in a year, free re-placement parts. <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Parts Replacement, Don’t worry about the parts damaged or not sold after the machine is sold, we have a field factory with after-sales service department to serve you.</div> <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Engineer Assignment, Lifelong maintenance, If your equipment breaks down, we will arrange engineers to repair it.</div> <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Online Instruction, We open online services, as long as your equipment failure, our engineers will be the first time for a one-to-one troubleshooting.</div> <div><span><i class="block-icon"><span style="color:#9d2933;"><span style="font-size:24px;"><i class="fa"></i></span></span>&nbsp;</i></span>Feedback Survey, The engineer is required to bring a questionnaire to fill in the satisfaction with the engineer and the use of the equipment.</div> </div> </div>
+			</div>
+		</div>
+	</main>
+</template>
+<script setup>
+import AboutSlide from './slidemenu/aboutSlide'
+</script>

@@ -15,11 +15,13 @@ const getGoodsBycid = (req)=>{
   //   return exec(sql);
   // }
   const _id = req.id 
+  const offset = 4
   let where = '1 = 1'
   if(_id && _id !== 'all') {
     where = where + ' and goods.c_id =' + _id
   }
-  let sql = `SELECT * FROM goods Where ${where} ORDER BY sort`
+  let sql = `SELECT * FROM goods Where ${where} and isPublish = 1 ORDER BY sort limit ${offset}`
+  console.log(sql)
   return exec(sql);
 }
 const getProductsByCid = (req) => {
@@ -45,8 +47,15 @@ const getGoodsCate = ()=>{
   return exec(sql);
 }
 const getCateById = (req) => {
-  let sql = `SELECT * FROM category WHERE cid = ${req.params.id}`
-  return exec(sql);
+  if(req.params.id == 'all') {
+    let sql = `SELECT * FROM page WHERE id = 1`
+    return exec(sql);
+  }else {
+    let sql = `SELECT * FROM category WHERE cid = ${req.params.id}`
+    return exec(sql);
+  }
+  
+
 }
 module.exports = {
   getProductsByCid,

@@ -4,8 +4,8 @@ const getPage = () => {
   let sql = `select * from page ORDER BY id`;
   return exec(sql);
 }
-const getPageListId = (req) => {
-  let sql = `select * from page WHERE id = ${req.pid}`;
+const getPageById = (req) => {
+  let sql = `select * from page WHERE id = ${req.params.id}`;
   return exec(sql);
 }
 const getPageChildListId = (req) => {
@@ -31,7 +31,7 @@ const getUser = (req) => {
 module.exports ={
   getPage,
   getCategory,
-  getPageListId,
+  getPageById,
   editPageInfoById,
   getPageChildListId,
   editPageChildInfoById,

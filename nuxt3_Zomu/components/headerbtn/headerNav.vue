@@ -19,7 +19,7 @@
 				<div class="nav_body">
 					<div class="nav_body_left">
 						<ul class="nav_list">
-							<li class="nav_list_item is-current">
+							<li :class="`nav_list_item ${props.content == 4 ? 'is-current': ''}`">
 								<a href="/" class="nav_list_link">
 									Home
 								</a>
@@ -29,8 +29,8 @@
 									</div>
 								</div>
 							</li>
-							<li class="nav_list_item">
-								<a href="./about" class="nav_list_link">
+							<li :class="`nav_list_item ${props.content == 5 ? 'is-current': ''}`">
+								<a href="/about" class="nav_list_link">
 									About
 								</a>
 								<div class="nav_list_bar_block">
@@ -39,8 +39,8 @@
 									</div>
 								</div>
 							</li>
-							<li class="nav_list_item">
-								<a href="./products" class="nav_list_link">
+							<li :class="`nav_list_item ${props.content == 1 ? 'is-current': ''}`">
+								<a href="/product/all" class="nav_list_link">
 									Products
 								</a>
 								<div class="nav_list_bar_block">
@@ -50,8 +50,8 @@
 								</div>
 							</li>
 
-							<li class="nav_list_item">
-								<a href="./contact" class="nav_list_link">
+							<li :class="`nav_list_item ${props.content == 9 ? 'is-current': ''}`">
+								<a href="/contact" class="nav_list_link">
 									Contact
 								</a>
 								<div class="nav_list_bar_block">
@@ -142,4 +142,9 @@
 const btnClose = ()=> {
     $('#Nav').removeClass('active')
 }
+import { defineProps } from 'vue'
+const props = defineProps({
+  content:String
+})
+console.log(props.content)
 </script>

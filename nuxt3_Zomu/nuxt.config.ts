@@ -23,10 +23,7 @@ export default defineNuxtConfig({
       link: [
         {rel: 'stylesheet',href: '/css/style.css'},
         {rel: 'stylesheet',href: '/css/component.css'},
-      ],
-      script: [
-        {src: 'js/jquery-1.7.2.min.js'},{src: 'js/adaptive.js'},{src: 'js/anime.min.js'},{src: 'js/enquire.min.js'},
-        {src: 'js/tabsnav.js'},{src: 'js/common.js'}
+        {rel: 'stylesheet',href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'}
       ]
     }
   }

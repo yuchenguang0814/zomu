@@ -1464,13 +1464,14 @@ a {
     user-select: none;
     pointer-events: none;
 }
-.codrops-links nav ul li:hover a {
+.codrops-links nav ul li:hover a, .codrops-links nav ul li.active a{
 	color: rgba(157, 41, 51);
 }
-.codrops-links nav ul li:hover a::after {
+.codrops-links nav ul li:hover a::after,.codrops-links nav ul li.active a::after{
     transform: translateX(0) scaleX(1);
     transition: transform .85s cubic-bezier(.2, .84, .49, 1);
 }
+
 .poster__box {
     top: 0;
     width: 100%;
@@ -2043,3 +2044,7 @@ a {
 #gallery figure small {
     font-size: 0.18rem;
 }
+.logo img {
+    max-width: 300px;
+    max-height: 50px;
+  }

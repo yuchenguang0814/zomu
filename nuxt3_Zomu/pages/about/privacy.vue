@@ -5,14 +5,14 @@
       <Meta name="description" :content="data.data.data[0].pageDescription" />
   </Head>
       <div>
-        <Header :content="data.data.data[0].id"/>
-        <AboutMain />
+        <Header :content="5"/>
+        <PrivacyMain />
       </div>
     </template>
 <script setup>
 const publicPath = 'http://localhost:3000'
-const { data } = await useFetch( publicPath + `/web/Page/getPage/5`, {method: 'get'})
-  useHead({
+const { data } = await useFetch( publicPath + `/web/Page/getPage/7`, {method: 'get'})
+useHead({
     link:[
   {
     rel: 'stylesheet',
@@ -44,4 +44,4 @@ const { data } = await useFetch( publicPath + `/web/Page/getPage/5`, {method: 'g
     ]
   })
 
-  </script>
+</script>

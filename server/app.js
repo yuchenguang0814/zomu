@@ -13,6 +13,7 @@ const EmailRouter = require('./routes/email');
 const CateRouter = require('./routes/admin/CateRouter');
 const OrderRouter = require('./routes/admin/OrderRouter');
 const WebProRouter = require('./routes/web/WebProRouter');
+const WebPageRouter = require('./routes/web/WebPageRouter');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(WebProRouter)
+app.use(WebPageRouter)
 
 
 // 中间件

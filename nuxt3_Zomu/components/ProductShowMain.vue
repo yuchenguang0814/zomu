@@ -17,7 +17,6 @@
 <script setup>
 import CategorySlide from './slidemenu/categorySlide.vue'
 import { useRoute } from 'vue-router'
-import {ref} from 'vue'
 const route = useRoute()
 const publicPath = 'http://localhost:3000'
 const { data } = await useFetch( publicPath + `/web/pro/getPro/${route.params.id}`, {method: 'get'})
@@ -73,55 +72,4 @@ const vHtml = `
           </div>
         </div>
 `
-useHead({
-  link:[
-  {
-    rel: 'stylesheet',
-    type: 'text/css',
-    href: '/css/style.css'
-  },
-  {
-    rel: 'stylesheet',
-    type: 'text/css',
-    href: '/css/component.css'
-  },
-  {
-    rel: 'stylesheet',
-    href: '/css/pages.css'
-  },
-  {
-    rel: 'stylesheet',
-    type: 'text/css',
-    href: '/css/other.css'
-  }
-  ],
-  script:[
-  {
-    src:"/js/jquery-1.7.2.min.js",
-    body:true
-  },
-  {
-    src:"/js/adaptive.js",
-    body:true
-  },
-  {
-    src:"/js/anime.min.js",
-    body:true
-  },
-  {
-    src:"/js/common.js",
-    body:true
-  },
-  {
-    src:"/js/ipresenter.packed.js",
-    body:true
-  },
-  {
-    src:"/js/ipresenter.js",
-    body:true
-  }
-  ]
-})
-
-
 </script>

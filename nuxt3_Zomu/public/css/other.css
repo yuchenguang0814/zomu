@@ -287,7 +287,7 @@
     }
     .product .poster__title {
         padding-left: 0;
-        font-size: 0.3rem;
+        font-size: 0.26rem;
         text-shadow: unset;
         width: 100%;
         margin-top: 0;
@@ -295,7 +295,7 @@
     }
     .product .poster__deco {
         padding-left: 0;
-        font-size: 0.24rem;
+        font-size: 0.2rem;
         text-shadow: unset;
         font-family: Poppins;
     }
@@ -463,6 +463,16 @@
     div.o-pro div.ipresenter-controlNav div.ipresenter-items ul li {
         float: left;
     }
+    .poster__deco{
+        max-height: 1.2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    
     /* .o-v-pro .p2,.o-v-pro .p2 a {
         height: .5rem;
         font-size: 0.18rem;
@@ -482,7 +492,7 @@
     }*/
     .o-v-pro iframe {
         width: 10rem;
-        height: 400px;
+        height: 540px;
     }
     .o-v-pro .pro-adv {
         width: 10rem;
