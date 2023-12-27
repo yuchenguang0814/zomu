@@ -10,7 +10,7 @@
         <CategorySlide :content="route.params.id"></CategorySlide>
         <div class='pages '>
             <h2 class="poster__title"> {{ data.data.data[0].pageName }}</h2>
-						<p class="poster__deco">{{ data.data.data[0].pageDescription }}</p>
+						<p class="poster__deco">{{ data.data.data[0].pageTitleImage }}</p>
               <PorductByCid :content="route.params.id "></PorductByCid>
 			  </div>
       </div>

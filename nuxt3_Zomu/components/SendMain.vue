@@ -5,7 +5,7 @@
       <ContSlide :content="2" />
       <div class='pages product' style="box-shadow: none;">
             <h2 class="poster__title"> {{ props.content.pageName }}</h2>
-						<p class="poster__deco">{{ props.content.pageDescription }}</p>
+						<p class="poster__deco">{{ props.content.pageTitleImage }}</p>
 			</div>
 		</div>
 	</main>

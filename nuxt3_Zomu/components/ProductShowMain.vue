@@ -19,6 +19,7 @@ import CategorySlide from './slidemenu/categorySlide.vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const publicPath = 'http://localhost:3000'
+
 const { data } = await useFetch( publicPath + `/web/pro/getPro/${route.params.id}`, {method: 'get'})
 const vidHtml =  data.value.data.data[0].vidurl? ` <div
               id="view"
