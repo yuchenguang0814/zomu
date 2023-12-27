@@ -1,5 +1,5 @@
 <template>
-  <button class="header_right_btn" @click="btnClick()">
+  <button :class="`header_right_btn ${click?'active': ''}`" @click="btnClick()">
 						<span class="header_right_btn_bar">
 							<span class="header_right_btn_bar_inner"></span>
 						</span>
@@ -21,7 +21,8 @@
 					</button>
 </template>
 <script setup>
+const click = false
 const btnClick = ()=> {
-	$('#Nav').addClass('active')
+	click = true
 }
 </script>

@@ -458,5 +458,4 @@
 	};
 
 	window.TabsNav = TabsNav;
-	console.log(window.TabsNav)
 })(window);
