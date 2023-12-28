@@ -2048,3 +2048,8 @@ a {
     max-width: 300px;
     max-height: 50px;
   }
+.send_span {
+    font-size: 14px;
+    margin-top: 10px;
+    padding-left: 20px;
+}

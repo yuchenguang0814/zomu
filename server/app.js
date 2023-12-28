@@ -12,9 +12,12 @@ const ProRouter = require('./routes/admin/ProRouter');
 const EmailRouter = require('./routes/email');
 const CateRouter = require('./routes/admin/CateRouter');
 const OrderRouter = require('./routes/admin/OrderRouter');
+const PageRouter = require('./routes/admin/PageRouter');
+
+
 const WebProRouter = require('./routes/web/WebProRouter');
 const WebPageRouter = require('./routes/web/WebPageRouter');
-const PageRouter = require('./routes/admin/PageRouter');
+const WebNewRouter = require('./routes/web/WebNewRouter');
 
 var app = express();
 
@@ -29,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(WebProRouter)
 app.use(WebPageRouter)
+app.use(WebNewRouter)
 
 
 // 中间件

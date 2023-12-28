@@ -1,6 +1,6 @@
 const { exec } = require('../db/mysql')
 const getAllNew = () => {
-  let sql = `SELECT * FROM news`
+  let sql = `SELECT * FROM news where isPublish = 1`
   return exec(sql)
 }
 const getNew = (req) => {
@@ -8,7 +8,7 @@ const getNew = (req) => {
   return exec(sql)
 }
 const getNewById = (req) => {
-  let sql = `SELECT * FROM news where id = ${req.id}`
+  let sql = `SELECT * FROM news where id = ${req.params.id} and isPublish = 1`
   return exec(sql)
 }
 const getPreNew = (req) => {

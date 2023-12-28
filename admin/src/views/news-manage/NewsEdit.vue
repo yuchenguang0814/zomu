@@ -19,9 +19,11 @@
       <el-form-item label="内容" prop="content">
         <Editor @event="editorHandleChange" :content="newForm.content" v-if="newForm.content"/>
       </el-form-item>
+      <el-alert show-icon title="为了更美观，图片尺寸选择1920*500" type="warning" :closable="false" class="key_alert"></el-alert>
       <el-form-item label="封面图片" prop="imgurl">
         <Upload :logo="newForm.imgurl" @kerwinchange = "handleChange" />
       </el-form-item>
+      <el-alert show-icon title="为了更好的优化，请填写下面这些信息" type="warning" :closable="false" class="key_alert"></el-alert>
       <el-form-item label="案例关键词" prop="pageKey">
         <el-input v-model="newForm.pageKey"></el-input>
       </el-form-item>

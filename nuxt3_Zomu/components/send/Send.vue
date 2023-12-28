@@ -2,9 +2,10 @@
 <div class="nav_send_form">
     <form onkeypress="return event.keyCode != 13;" class="form">
       <input class="form__input" type="text" placeholder="Name" v-model="form.name">
-      <input class="form__input" type="text" placeholder="Email" v-model="form.eamil">
+      <input class="form__input" type="text" placeholder="Email" v-model="form.email">
       <textarea class="form__input form_text" placeholder="Content" v-model="form.content"></textarea>
       <button class="form__button button submit" @click="send()" type="button">SEND</button>
+      <span class="send_span" v-if="isSend">Send Success</span>
     </form>
   </div>
   
@@ -12,22 +13,37 @@
 
 <script setup>
 import {reactive} from 'vue'
-import axios from 'axios'
+// import axios from 'axios'
 const form = reactive({
   name:'',
-  eamil:'',
+  email:'',
   content:''
 })
 // const Date = JSON.stringify(form)
 const publicPath = 'http://localhost:3000'
-  
+const isSend = ref(false)
 const send = async () => {
-  const { data } = await useFetch( publicPath + `/email`, {
-    method: 'post',
+  if(form.name == '' || form.email == ''){
+    alert('Please enter your name or email')
+  } else {
+    isSend.value = true
+    await $fetch( publicPath + `/email`, {
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: form
-})
+    method: 'POST',
+    body: {
+    'name': form.name,
+    'email': form.email,
+    'content': form.content
+    }
+  })
+  }
+  
+  form.name = ''
+  form.email = ''
+  form.content =''
 }
+
+
 </script>

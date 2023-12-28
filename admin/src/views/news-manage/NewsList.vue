@@ -8,7 +8,7 @@
       <el-table :data="tableDate">
         <el-table-column label="缩略图" prop="imgurl" width="280">
           <template #default="scope">
-            <el-image style="width: 100px; height: 100px" :src="`${publicPath }` + scope.row.imgurl"  />
+            <el-image style="width: 250px; height: 100px" :src="`${publicPath }` + scope.row.imgurl"  />
           </template>
         </el-table-column>
         <el-table-column label="标题" prop="title" width="280"></el-table-column>

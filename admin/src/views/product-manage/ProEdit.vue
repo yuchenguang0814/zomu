@@ -26,6 +26,7 @@
       <el-form-item label="产品序号" prop="sort">
           <el-input-number v-model="proForm.sort" :min="1"  controls-position="right" size="small"/>
       </el-form-item>
+      <el-alert show-icon title="为了更美观，图片尺寸选择800*800，png格式的原图" type="warning" :closable="false" class="key_alert"></el-alert>
       <el-form-item label="产品图片" prop="image">
         <Upload :logo="proForm.image" @kerwinchange = "handleChange" />
       </el-form-item>
