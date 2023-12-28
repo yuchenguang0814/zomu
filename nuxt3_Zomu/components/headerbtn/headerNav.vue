@@ -65,21 +65,11 @@
 					</div>
 					<div class="nav_body_right">
 						<div class="nav_body_right_item">
-							<div class="nav_search_form">
-                <form action="">
-                  <div class="nav_search_form_mask">
-                    <div class="nav_search_form_mask_inner">
-                      <label for="NavSearchInput" class="nav_search_label">
-                        <input type="text" class="nav_search_input" placeholder="Search">
-                      </label>
-                      <button class="search_results_main_body_btn" type="submit">
-                        <svg viewBox="0 0 20.7 20.7"> <use href="#ShapeSearch"></use></svg>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="nav_search_form_bar" style="transform: rotate(0.0001deg);"></div>
-                </form>
-              </div>
+							<!-- 搜索 -->
+							<Search/>
+							<!-- 发送留言 -->
+							<Send />
+
 						</div>
 					</div>
 				</div>
@@ -139,12 +129,13 @@
 	</nav>
 </template>
 <script setup>
+import { defineProps } from "vue";
+import Search from '../send/Search.vue'
+import Send from '../send/Send.vue'
 const btnClose = ()=> {
     $('#Nav').removeClass('active')
 }
-import { defineProps } from 'vue'
 const props = defineProps({
   content:String
 })
-console.log(props.content)
 </script>

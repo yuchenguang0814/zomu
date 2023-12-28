@@ -58,5 +58,4 @@ import { defineProps } from 'vue'
 const props = defineProps({
   content: Boolean
 })
-console.log(props.content)
 </script>

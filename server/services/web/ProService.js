@@ -1,4 +1,4 @@
-const { getProductIsHome,getProduct,getAllGood,getGoodsCate,getGoodsBycid,getCateById} = require("../../sql/product")
+const { getProductIsHome,getProduct,getAllGood,getGoodsCate,getGoodsBycid,getCateById,getGoodsByName} = require("../../sql/product")
 const ProService = {
   getProBycid:async (req) => {
     const result = {
@@ -79,19 +79,36 @@ const ProService = {
       data: ''
     }
     if(!req.params.id) {
-      return getAllGood(req).then(res => {
-        if (res.length === 0) {
-          result.code = 201
-          result.message = '获取产品列表失败'
-          return result
-        } else {
-          result.code = 200
-          result.message = '获取产品列表成功'
-          result.data = JSON.parse(JSON.stringify(res))
-          return result
-        }
-      })
-    } else {
+      if(!req.params.searchInfo){
+        return getAllGood(req).then(res => {
+          if (res.length === 0) {
+            result.code = 201
+            result.message = '获取产品列表失败'
+            return result
+          } else {
+            result.code = 200
+            result.message = '获取产品列表成功'
+            result.data = JSON.parse(JSON.stringify(res))
+            return result
+          }
+        })
+      }else {
+        return getGoodsByName(req).then(res => {
+          if (res.length === 0) {
+            result.code = 201
+            result.message = '查询失败'
+            return result
+          } else {
+            result.code = 200
+            result.message = '查询成功'
+            result.data = JSON.parse(JSON.stringify(res))
+            return result
+          }
+        })
+      }
+      
+    } 
+    else {
       return getProduct(req).then(res => {
         if (res.length === 0) {
           result.code = 201

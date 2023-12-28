@@ -31,11 +31,11 @@ const getProductsByCid = (req) => {
 } 
 const getProduct = (req) => {
   const id = req.params.id
-  let sql = `SELECT * FROM goods where id = ${id}`
+  let sql = `SELECT * FROM goods where id = ${id} and isPublish = 1`
   return exec(sql)
 } 
 const getAllGood = () => {
-  let sql = `SELECT * FROM goods`
+  let sql = `SELECT * FROM goods where isPublish = 1`
   return exec(sql)
 }
 const getProductIsHome = (req) => {
@@ -54,8 +54,10 @@ const getCateById = (req) => {
     let sql = `SELECT * FROM category WHERE cid = ${req.params.id}`
     return exec(sql);
   }
-  
-
+}
+const getGoodsByName = (req) => {
+  let sql = `SELECT * from goods where LOCATE('${req.params.searchInfo}', name) > 0 and isPublish = 1 limit 4`;
+  return exec(sql);
 }
 module.exports = {
   getProductsByCid,
@@ -64,5 +66,6 @@ module.exports = {
   getProductIsHome,
   getGoodsBycid,
   getGoodsCate,
-  getCateById
+  getCateById,
+  getGoodsByName
 }
