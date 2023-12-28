@@ -7,8 +7,9 @@ const getGoodsCate = ()=>{
 
 const addCate = (data)=>{
   const path = `/cateUploads/${data.file.filename}`
-  const pageDescription = req.body.pageDescription.replace(/\'/g, "''")
-  let sql = `insert into category values (null,'${data.body.pageId}','${data.body.pageName}','${data.body.pagePath}','${path}','${data.body.pageTitleImage}','${pageDescription}','${data.body.pageKey}')`;
+  const pageDescription = data.body.pageDescription.replace(/\'/g, "''")
+  const pageTitleImage = data.body.pageTitleImage.replace(/\'/g, "''")
+  let sql = `insert into category values (null,'${data.body.pageId}','${data.body.pageName}','${data.body.pagePath}','${path}','${pageTitleImage}','${pageDescription}','${data.body.pageKey}')`;
   return exec(sql);
 }
 const getCateById = (req) => {
@@ -17,12 +18,13 @@ const getCateById = (req) => {
 }
 const editGoodById = (req) => {
   const pageDescription = req.body.pageDescription.replace(/\'/g, "''")
+  const pageTitleImage = req.body.pageTitleImage.replace(/\'/g, "''")
   if(req.file) {
     const path = `/cateUploads/${req.file.filename}`
-    let sql = `UPDATE category SET pageName = '${req.body.pageName}',pagePath = '${req.body.pagePath}',pageImage = '${path}',pageDescription = '${pageDescription}',pageKey = '${req.body.pageKey}' WHERE cid = ${req.body.cid}`
+    let sql = `UPDATE category SET pageName = '${req.body.pageName}',pagePath = '${req.body.pagePath}',pageImage = '${path}',pageTitleImage = '${pageTitleImage}',pageDescription = '${pageDescription}',pageKey = '${req.body.pageKey}' WHERE cid = ${req.body.cid}`
     return exec(sql);
   } else {
-    let sql = `UPDATE category SET pageName = '${req.body.pageName}',pagePath = '${req.body.pagePath}',pageDescription = '${pageDescription}',pageKey = '${req.body.pageKey}' WHERE cid = ${req.body.cid}`
+    let sql = `UPDATE category SET pageName = '${req.body.pageName}',pagePath = '${req.body.pagePath}',pageTitleImage = '${pageTitleImage}',pageDescription = '${pageDescription}',pageKey = '${req.body.pageKey}' WHERE cid = ${req.body.cid}`
     return exec(sql);
   }
 }

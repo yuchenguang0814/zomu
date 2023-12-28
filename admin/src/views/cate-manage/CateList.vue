@@ -7,12 +7,13 @@
     <el-card style="margin-top: 50px;">
       <el-table :data="tableDate">
         <el-table-column label="序号" prop="pagePath" width="100"></el-table-column>
-        <el-table-column label="分类名称" prop="pageName" width="280"></el-table-column>
         <el-table-column label="缩略图" prop="pageImage" width="280">
           <template #default="scope">
             <el-image style="width: 100px; height: 100px" :src="`${publicPath }` + scope.row.pageImage"  />
           </template>
         </el-table-column>
+        <el-table-column label="分类名称" prop="pageName" width="280"></el-table-column>
+        <el-table-column label="分类描述" prop="pageTitleImage"></el-table-column>
         <el-table-column label="操作">
           <template #default="scope">
             <!-- <el-button circle :icon="Star" @click="handlePreview(scope.row)" type="success"></el-button> -->

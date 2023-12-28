@@ -14,6 +14,7 @@ const CateRouter = require('./routes/admin/CateRouter');
 const OrderRouter = require('./routes/admin/OrderRouter');
 const WebProRouter = require('./routes/web/WebProRouter');
 const WebPageRouter = require('./routes/web/WebPageRouter');
+const PageRouter = require('./routes/admin/PageRouter');
 
 var app = express();
 
@@ -63,6 +64,8 @@ app.use(ProRouter)
 app.use(EmailRouter)
 app.use(CateRouter)
 app.use(OrderRouter)
+app.use(PageRouter)
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

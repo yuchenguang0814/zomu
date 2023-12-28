@@ -12,8 +12,15 @@
       <el-form-item label="产品名称" prop="pageName">
         <el-input v-model="cateForm.pageName"></el-input>
       </el-form-item>
-      <el-form-item label="产品序号" prop="pagePath">
+      <el-form-item label="分类序号" prop="pagePath">
           <el-input-number v-model="cateForm.pagePath" :min="1"  controls-position="right" size="small"/>
+      </el-form-item>
+      <el-form-item label="分类描述" prop="pageTitleImage">
+        <el-input
+          v-model="cateForm.pageTitleImage"
+          :autosize="{ minRows: 4, maxRows: 6 }"
+          type="textarea"
+        />
       </el-form-item>
       <el-form-item label="产品图片" prop="pageImage">
         <Upload :logo="cateForm.pageImage" @kerwinchange = "handleChange" />
@@ -50,6 +57,7 @@ const cateForm = reactive({
   pageKey: '',
   pageImage:'',
   pageDescription: '',
+  pageTitleImage:'',
   file:null  
 })
 const cateFormRules = reactive({

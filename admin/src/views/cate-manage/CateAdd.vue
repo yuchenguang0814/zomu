@@ -15,6 +15,13 @@
       <el-form-item label="分类序号" prop="pagePath">
           <el-input-number v-model="cateForm.pagePath" :min="1"  controls-position="right" size="small"/>
       </el-form-item>
+      <el-form-item label="分类描述" prop="pageTitleImage">
+        <el-input
+          v-model="cateForm.pageTitleImage"
+          :autosize="{ minRows: 4, maxRows: 6 }"
+          type="textarea"
+        />
+      </el-form-item>
       <el-form-item label="分类图片" prop="pageImage">
         <Upload :logo="cateForm.pageImage" @kerwinchange = "handleChange" />
       </el-form-item>

@@ -1,6 +1,6 @@
 const { exec} = require('../db/mysql');
 
-const getPage = () => {
+const getPageList = () => {
   let sql = `select * from page ORDER BY id`;
   return exec(sql);
 }
@@ -16,8 +16,8 @@ const getCategory = () => {
   let sql = `select * from category ORDER BY pagePath`;
   return exec(sql);
 }
-const editPageInfoById = (req) => {
-  let sql = `UPDATE page SET pageDescription = '${req.pageDescription}',pageImage = '${req.pageImage}',pageKey = '${req.pageKey}' WHERE id = ${req.id}`;
+const editPageById = (req) => {
+  let sql = `UPDATE page SET pageName = '${req.body.pageName}',pageTitleImage = '${req.body.pageTitleImage}',pageDescription = '${req.body.pageDescription}',pageKey = '${req.body.pageKey}' WHERE id = ${req.body.id}`;
   return exec(sql);
 } 
 const editPageChildInfoById = (req) => {
@@ -29,10 +29,10 @@ const getUser = (req) => {
   return exec(sql)
 }
 module.exports ={
-  getPage,
+  getPageList,
   getCategory,
   getPageById,
-  editPageInfoById,
+  editPageById,
   getPageChildListId,
   editPageChildInfoById,
   getUser

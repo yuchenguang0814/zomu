@@ -44,6 +44,12 @@
       <el-sub-menu index="/page">
         <template #title>
           <el-icon><Menu/></el-icon>
+          <span>页面管理</span></template>
+        <el-menu-item index="/page/pagelist">页面优化</el-menu-item>
+      </el-sub-menu>
+      <el-sub-menu index="/order">
+        <template #title>
+          <el-icon><Menu/></el-icon>
           <span>留言管理</span></template>
         <el-menu-item index="/order/orderlist">留言列表</el-menu-item>
       </el-sub-menu>
