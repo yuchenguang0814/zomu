@@ -20,10 +20,5 @@
 const route = useRoute()
 const router = useRouter()
 const searchInfo = ref();
-// const search = () => {
-//   if(form.value.searchInfo) {
-//     router.push(`/search/${form.value.searchInfo}`)
-//   }
-// }
 </script>
   
