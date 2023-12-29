@@ -18,7 +18,7 @@
 			:id="`${props.content}`"
       :pageNum = pageNum
       @pageChange="pageChange"
-			:class="className"
+      :class="className"
       />
 </template>
 <script setup>
@@ -30,7 +30,6 @@ const props = defineProps({
   content:String
 })
 const pageNum = ref();
-const PageData = ref()
 const pageChange =  (value) => {
   pageNum.value = value.index
 }
@@ -39,18 +38,13 @@ const toggleHover = (value) => {
 	isHover = value
 }
 const publicPath = 'http://localhost:3000'
-const { data } =  await useFetch( publicPath + `/web/pro/getProByCid/${props.content}`, {method: 'get'})
-const getDate = async() => {
-	return
-}
-if(!route.params.page) {
-	const { data } = await useFetch( publicPath + `/web/pro/getProByCid/${props.content}`, {method: 'get'})
-// 	const query = {
-//   id: props.content,
-//   page: route.params.page
-// }
-// const { data } = await useFetch( publicPath + `/web/pro/getProByCid/${JSON.stringify(query)}`, {method: 'get'})
-}
+const query = {
+    id: route.params.id,
+    page: route.params.page
+  }
+  const { data } = await useFetch( publicPath + `/web/pro/getProByCid/${JSON.stringify(query)}`, {method: 'get'})
+
+
 
 
 </script>

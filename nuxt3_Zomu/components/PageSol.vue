@@ -31,8 +31,10 @@
 </template>
 <script setup>
 import AboutSlide from './slidemenu/aboutSlide'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 const publicPath = 'http://localhost:3000'
-const { data } = await useFetch( publicPath + `/web/new/getNew`, {method: 'get'})
+const { data } = await useFetch( publicPath + `/web/new/getPageNew/${route.params.page}`, {method: 'get'})
 const className = 'sol'
 // const isHover = ref(false);
 const nowIndex = ref()

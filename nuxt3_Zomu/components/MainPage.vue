@@ -1,10 +1,10 @@
 <template>
-  <div class="main_pages">
+  <div :class="`main_pages  ${props.class}`">
     <ul class="pagination">
       <li :class="`${pageIndex == index ? 'active': ''}`" v-for="index in totalPages"
       :key="index" @click= currentPage(index)
       >
-      <span>{{index}}</span></li>
+      <a :href="`/${props.class}/page-${index}/${props.id}`"><span>{{index}}</span></a></li>
     </ul>
   </div>
 </template>
@@ -17,14 +17,17 @@ const pageIndex = ref(1)
 if(route.params.page) {
   pageIndex.value = route.params.page
 }
+
 const publicPath = 'http://localhost:3000'
 const props = defineProps({
     total: { type: [Number, String], default: 4 }, // 总数 The total number of
     pageNum: { type: [Number, String], default: 1 }, // 当前页数 The current number of pages
     pageSize: { type: [Number, String], default: () => 4 }, // 每页显示条数 Size of entries per page
     id: { type: [Number, String], default: 'all' },
+    class:String
     // 可选
 });
+console.log(props.class)
 // 总页数
 // const query = {
 //   id: props.id,
@@ -35,10 +38,14 @@ const props = defineProps({
 // console.log(data.value.data.data)
 const totalPages = computed(() => Math.ceil(props.total.num / props.pageSize))
 
-const emit = defineEmits(["pageChange"]);
-const currentPage = async(index) => {
-  emit("page-change", index);
-}
+// const emit = defineEmits(["pageChange"]);
+// const currentPage = async(index) => {
+//   const emitData = {
+//     index:index,
+//     data: data.value
+//   }
+//   emit("page-change", emitData);
+// }
 </script>
 <style>
  .main_pages {
@@ -70,7 +77,10 @@ const currentPage = async(index) => {
         display: flex;
         background-color: rgba(157, 41, 51);
       }
-      
+      .main_pages.sol {
+        bottom: 15%;
+        transform: translateX(50%);
+      }
       .main_pages .pagination li {
         font-size: 16px;
         color: #fff;
@@ -80,7 +90,9 @@ const currentPage = async(index) => {
         cursor: pointer;
         margin: 0 5px;
       }
-      
+      .main_pages .pagination li a {
+        color: #fff;
+      }
       
       .main_pages .pagination li.active:before {
         content: "";

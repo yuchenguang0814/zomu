@@ -21,6 +21,7 @@
 <script setup>
 import CategorySlide from './slidemenu/categorySlide.vue'
 import PorductByCid from './slidemenu/ProductByCid.vue'
+import PagePro from './slidemenu/PagePro.vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const publicPath = 'http://localhost:3000'

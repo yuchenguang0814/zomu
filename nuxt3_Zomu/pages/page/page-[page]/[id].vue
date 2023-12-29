@@ -6,7 +6,7 @@
 </Head>
   <div>
     <Header :content="data.data.data[0].id"/>
-    <ProductMain />
+    <PageProductMain />
   </div>
 </template>
 <script setup>
