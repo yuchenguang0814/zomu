@@ -14,28 +14,54 @@ const getGoodsBycid = (req)=>{
   //   let sql = `SELECT * FROM goods Where ${where} ORDER BY sort limit ${offset},${size}`
   //   return exec(sql);
   // }
+  // 
   const _id = req.id 
-  const offset = 4
+  let size = 4
+  let offset = 0
   let where = '1 = 1'
-  if(_id && _id !== 'all') {
+  if(_id && _id !== 'all' && typeof(JSON.parse(req.id)) === 'object') {
+    const query = JSON.parse(req.id)
+    offset = (query.page - 1) * size
+    if(query.id !== 'all'){
+      where = where + ' and goods.c_id =' + query.id
+    }
+  } else if (_id !=='all') {
+    offset = 0
     where = where + ' and goods.c_id =' + _id
   }
-  let sql = `SELECT * FROM goods Where ${where} and isPublish = 1 ORDER BY sort limit ${offset}`
-  console.log(sql)
+  if(offset == NaN) {
+    offset = 0
+  }
+  let sql = `SELECT * FROM goods Where ${where} and isPublish = 1 ORDER BY sort limit ${offset},${size}`
+  return exec(sql);
+}
+const getAllgoodsBycid = (req) => {
+  const _id = req.id 
+  let where = '1 = 1'
+  if(_id && _id !== 'all' && typeof(JSON.parse(req.id)) === 'object') {
+    const query = JSON.parse(req.id)
+    if(query.id !== 'all'){
+      where = where + ' and goods.c_id =' + query.id
+    }
+  } else if (_id !=='all') {
+    where = where + ' and goods.c_id =' + _id
+  }
+  let sql = `SELECT count(1) as num FROM goods  Where ${where} and isPublish = 1`
+  // let sql = `SELECT count(1) as num FROM goods`
   return exec(sql);
 }
 const getProductsByCid = (req) => {
   const id = req.query.id
-  let sql = `SELECT * FROM goods where c_id = ${id}`
+  let sql = `SELECT * FROM goods where c_id = ${id} ORDER BY sort limit 4`
   return exec(sql)
 } 
 const getProduct = (req) => {
   const id = req.params.id
-  let sql = `SELECT * FROM goods where id = ${id} and isPublish = 1`
+  let sql = `SELECT * FROM goods where id = ${id} and isPublish = 1 `
   return exec(sql)
 } 
 const getAllGood = () => {
-  let sql = `SELECT * FROM goods where isPublish = 1`
+  let sql = `SELECT * FROM goods where isPublish = 1 limit 4 ORDER BY sort`
   return exec(sql)
 }
 const getProductIsHome = (req) => {
@@ -56,7 +82,7 @@ const getCateById = (req) => {
   }
 }
 const getGoodsByName = (req) => {
-  let sql = `SELECT * from goods where LOCATE('${req.params.searchInfo}', name) > 0 and isPublish = 1 limit 4`;
+  let sql = `SELECT * from goods where LOCATE('${req.params.searchInfo}', name) > 0 and isPublish = 1 limit 4 ORDER BY sort`;
   return exec(sql);
 }
 module.exports = {
@@ -67,5 +93,6 @@ module.exports = {
   getGoodsBycid,
   getGoodsCate,
   getCateById,
-  getGoodsByName
+  getGoodsByName,
+  getAllgoodsBycid
 }

@@ -1,23 +1,34 @@
-const { getProductIsHome,getProduct,getAllGood,getGoodsCate,getGoodsBycid,getCateById,getGoodsByName} = require("../../sql/product")
+const { getProductIsHome,getProduct,getAllGood,getGoodsCate,getGoodsBycid,getCateById,getGoodsByName,getAllgoodsBycid} = require("../../sql/product")
 const ProService = {
   getProBycid:async (req) => {
     const result = {
       code: null,
       message: '',
-      data: ''
+      data: '',
+      count:''
     }
-      return getGoodsBycid(req.params).then(res => {
-        if (res.length === 0) {
-          result.code = 201
-          result.message = '获取产品列表失败'
-          return result
-        } else {
-          result.code = 200
-          result.message = '获取产品列表成功'
-          result.data = JSON.parse(JSON.stringify(res))
-          return result
-        }
-      })
+    return getGoodsBycid(req.params).then(res => {
+      if (res.length === 0) {
+        result.code = 201
+        result.message = '获取产品列表失败'
+        return result
+      } else {
+        return getAllgoodsBycid(req.params).then(count => {
+          if (res.length === 0) {
+            result.code = 201
+            result.message = '获取产品总数失败'
+            return result
+          }else {
+            result.code = 200
+            result.message = '获取产品列表成功'
+            result.data = JSON.parse(JSON.stringify(res))
+            result.count = JSON.parse(JSON.stringify(count))
+            return result
+          }
+      })   
+      }
+    })
+    
   },
   getCate:async (req) => {
     const result = {

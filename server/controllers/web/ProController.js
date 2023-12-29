@@ -12,12 +12,6 @@ const ProController = {
       data:result
     })
   },
-  getProc:async (req, res) => {
-    const result = await  ProService.getProBycid(req)
-    res.send({
-      data:result
-    })
-  },
   getProsByIshome:async (req, res) => {
     const result = await  ProService.getProIshome(req)
     res.send({
@@ -25,7 +19,8 @@ const ProController = {
     })
   },
   getProc:async (req, res) => {
-    const result = await  ProService.getProBycid(req)
+    const result = await ProService.getProBycid(req)
+    // res.setHeader('Content-Type', 'text/json');
     res.send({
       data:result
     })

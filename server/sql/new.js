@@ -1,6 +1,30 @@
 const { exec } = require('../db/mysql')
-const getAllNew = () => {
-  let sql = `SELECT * FROM news where isPublish = 1`
+const getAllNew = (req) => {
+  let size = 6
+  let offset = 0
+  let where = '1 = 1'
+  // if(!req) {
+  //   console.log(1)
+  // } else {
+  //   const query = JSON.parse(req.id)
+  //   offset = (query.page - 1) * size
+  // }
+  let sql = `SELECT * FROM news where ${where} and isPublish = 1 ORDER BY createtime limit ${offset},${size}`
+  // let sql = `SELECT * FROM goods Where  isPublish = 1 ORDER BY sort limit ${offset},${size}`
+  console.log(sql)
+  return exec(sql)
+}
+const getPageNewById = (req) => {
+  let size = 6
+  let offset = 0
+  let where = '1 = 1'
+  offset = (req.params.page - 1) * size
+  let sql = `SELECT * FROM news where ${where} and isPublish = 1 ORDER BY createtime limit ${offset},${size}`
+  console.log(sql)
+  return exec(sql)
+}
+const getTotalNew = () => {
+  let sql = `SELECT count(1) as num FROM news  where isPublish = 1`
   return exec(sql)
 }
 const getNew = (req) => {
@@ -35,5 +59,7 @@ module.exports = {
   getPreNew,
   getNextNew,
   getAllVids,
-  getVid
+  getVid,
+  getTotalNew,
+  getPageNewById
 }
