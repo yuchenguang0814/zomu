@@ -218,7 +218,7 @@
 .button:hover {
 	background: rgba(157, 41, 51);
 }
-@media screen and (max-width:800px) {
+@media screen and (max-width:912px) {
 	.view {
 		margin: 0;
 		height: unset;
@@ -265,7 +265,7 @@
 	}
 	.poster__box ul li {
 		margin-bottom: 20px;
-		max-width: calc(50% - 6px);
+		max-width: calc(50% - 10px);
 	}
 	.poster__box ul li:nth-child(2n) {
 		margin-right: 0;
@@ -329,5 +329,11 @@
 	.poster__box ul li {
 		padding-bottom: 1.5rem;
 	}
-	
+	.poster__box ul li {
+		padding-bottom: 0;
+	}
+	.poster__box ul li span {
+		position: relative;
+		margin-top: 10px;
+	}
 }

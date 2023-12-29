@@ -7,9 +7,13 @@
 }
 
 body {
-	font-family: 'Avenir Next', Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Avenir Next', Avenir, Helvetica, "Helvetica Neue", "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 	color: #332c2b;
 	background: lavender;
+
+}
+body * {
+    font-family: 'Avenir Next', Avenir, Helvetica, "Helvetica Neue", "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 *::selection{
     background: none;
@@ -2055,7 +2059,7 @@ a {
     padding-left: 20px;
 }
 /* 手机端代码 */
-@media screen and (max-width:992px) {
+@media screen and (max-width:912px) {
     .NavClose, .nav_head_inner {
         height: 45px;
     }
@@ -2271,5 +2275,4 @@ a {
         height: 0;
         transition: all 0.35s linear;
       }
-
 }

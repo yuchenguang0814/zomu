@@ -14,16 +14,20 @@
           <h2>{{data.data.data[0].name}}</h2>
         <div class="phone-pro-cont">
           <div class="text-newm">
-            <strong><span style="line-height:1.5;">Product overView</span></strong>
+            <strong><span style="line-height:1.5;">Product OverView</span></strong>
           </div>
           <div class="table-responsive">
             {{data.data.data[0].overView}}
           </div>
           <div class="text-newm">
-            <strong><span style="line-height:1.5;">Product video</span></strong>
+            <strong><span style="line-height:1.5;">Product Video</span></strong>
           </div>
-          <div class="table-responsive">
-            {{data.data.data[0].vidurl}}
+          <div class="table-responsive" v-html="data.data.data[0].vidurl">
+          </div>
+          <div class="text-newm">
+            <strong><span style="line-height:1.5;">Product Table</span></strong>
+          </div>
+          <div class="table-responsive" v-html="data.data.data[0].content">
           </div>
         </div>
         </div>
