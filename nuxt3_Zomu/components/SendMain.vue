@@ -1,7 +1,7 @@
 <template>
   <main class="view">
 		<div class="v-content ">
-			<img src="/images/img1.jpg" alt="" class="o-view-img">
+			<img src="/images/img1.jpg" alt="{{ props.content.pageName }}" class="o-view-img">
       <ContSlide :content="2" />
       <div class='pages product' style="box-shadow: none;">
             <h2 class="poster__title"> {{ props.content.pageName }}</h2>
@@ -20,7 +20,7 @@ const props = defineProps({
 })
 </script>
 <style>
-.pages.product input {
+/* .pages.product input {
 	display: block;
 	width:60%;
 	margin-left:20%;
@@ -31,5 +31,5 @@ const props = defineProps({
 }
 .pages.product .button {
 	margin: 20px auto;
-}
+} */
 </style>

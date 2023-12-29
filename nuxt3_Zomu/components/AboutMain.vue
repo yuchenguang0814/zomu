@@ -1,5 +1,5 @@
 <template>
-  <main class="view">
+  <main class="view about">
 		<div class="v-content">
 			<img src="/images/img1.jpg" alt="" class="o-view-img">
       <AboutSlide :content="1" />

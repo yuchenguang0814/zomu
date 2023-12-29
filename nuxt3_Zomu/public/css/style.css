@@ -1343,7 +1343,8 @@ a {
     }
 
     .nav_search_input {
-        font-size: 0.15rem
+        font-size: 18px;
+        width: 95%;
     }
 
     .nav_search_btn {
@@ -2052,4 +2053,223 @@ a {
     font-size: 14px;
     margin-top: 10px;
     padding-left: 20px;
+}
+/* 手机端代码 */
+@media screen and (max-width:992px) {
+    .NavClose, .nav_head_inner {
+        height: 45px;
+    }
+    
+    .nav,.nav_head_inner {
+        padding: 10px 15px 0;
+        position: relative;
+    }
+    .nav {
+        position: fixed;
+        background-color: #fff;
+        height: 45px;
+        box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.6);
+    }
+    .codrops-links nav ul li,.btn--back {
+        display: none;
+    }
+    .header_right_btn ,.NavClose{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+    .NavClose {
+        margin-right: 0;
+    }
+    .nav_scroll {
+        padding: 60px 10px 0;
+    }
+    .nav_list {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .nav_list_item {
+        padding-left: 0;
+        width: 100%;
+    }
+    .nav_body_right_link, .nav_list_link {
+        font-size: 16px;
+    }
+    #Nav.active {
+		height: 100%;
+	}
+    .nav_list-social_block {
+        height: auto;
+    }
+    .nav_list-social {
+        width: 100%;
+    }
+    .nav_list-social_item {
+        flex: 1;
+        width: 25%;
+    }
+    .nav_list-social {
+        margin-left: 0;
+    }
+    .nav_foot {
+        padding-bottom: 0px;
+    }
+    .nav_list_link {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 50px;
+    }
+    .nav_search_form .nav_search_form_mask {
+        width: 100%;
+    }
+    .search_results_main_body_btn svg {
+        width: 0.35rem;
+        height: 0.35rem;
+    }
+    .nav_search_form_bar {
+        width: 100%;
+    }
+    .form__input {
+        width: 100%;
+    }
+    
+.online-list {
+    position: fixed;
+    z-index: 99;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    margin: 0 20px;
+    overflow: unset;
+  }
+  .online-list ul {
+    background: rgba(0,0,0,0.5);
+    border-radius: 30px;
+  }
+  .online-list ul li {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    cursor: pointer;
+  }
+  .online-list ul li a {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    padding-left: 16px;
+    height: 100%;
+    line-height: 50px;
+    text-align: left;
+    background: rgba(157, 41, 51);;
+    color: #fff;
+    border-radius: 50px;
+    z-index: 19;
+    overflow: hidden;
+    transition: width .5s;
+    transform: scale(0);
+  }
+  .online-list ul li:hover i{
+    transform: scale(1.2);
+  }
+  .online-list ul li:hover>a {
+    width: 175px;
+    transform: scale(1);
+  }
+  .online-list ul li:nth-child(3):hover>a {
+    width: 200px;
+  }
+  .online-list ul li:nth-child(5):hover>a {
+    width: 130px;
+  }
+  .icon-top:hover {
+    transform: scale(1.1);
+  }
+  .online-list ul li .big-icon {
+    width: 50px;
+    height: 50px;
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    line-height: 50px;
+    text-align: center;
+    z-index: 99;
+    position: absolute;
+  }
+  .online-list ul li .big-icon.block-iconyouxiang {
+    font-size: 20px;
+  }
+  .online-list ul li .big-icon.block-iconfanhuidingbu {
+    background-color: rgba(157, 41, 51);;
+    font-size: 16px;
+    width: 40px;
+    display: block;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    margin-top: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0;
+  }
+    .online-list {
+        top: unset;
+        bottom: 0%;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        right: unset;
+        transform: none;
+        padding: 0;
+      }
+      .online-list ul {
+        display: flex;
+        width: 100%;
+        position: relative;
+        list-style-type: none;
+      }
+      .online-list ul li {
+        flex: 1;
+        border-left: 1px solid #d3d3d3;
+        position: unset;
+        transition: all .5 ease;
+      }
+      .online-list ul li .big-icon {
+        width: 100%;
+        position: unset;
+      }
+      .online-list ul li:last-child {
+        border: none;
+      }
+      .icon-top {
+        display: none!important;
+      }
+      .tawk-button {
+        bottom: 80px;
+      }
+      .online-list ul li a {
+        top: -50px;
+        right: unset;
+        left: 0;
+        font-size: 14px;
+        text-align: center;
+        padding: 0;
+      }
+      .online-list ul li:hover>a {
+        width: 100% !important;
+      }
+      .online-list ul li:hover {
+        background-color: rgba(157, 41, 51);;
+      }
+      #Nav {
+        height: 0;
+        transition: all 0.35s linear;
+      }
+
 }

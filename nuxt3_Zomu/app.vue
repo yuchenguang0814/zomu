@@ -1,5 +1,7 @@
 <template>
   <NuxtPage></NuxtPage>
+  <Footer></Footer>
 </template>
-<script scoped>
+<script setup>
+import Footer from './components/Footer.vue'
 </script>

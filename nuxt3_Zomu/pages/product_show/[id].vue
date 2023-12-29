@@ -1,11 +1,22 @@
 <template>
   <div>
     <Header :content="1" />
-    <ProductShowMain />
-    <div class="sharethis-inline-share-buttons"></div>
+    <ProductShowMain v-if="!isPhone" />
+    <ProductsPhoneShow else />
+    <!-- <div class="sharethis-inline-share-buttons"></div> -->
   </div>
 </template>
 <script setup>
+import { ref, onMounted } from 'vue';
+const isPhone = ref(false)
+onMounted(() => {
+  isPhone.value = isMobile()
+})
+const isMobile = () => {
+  const userAgent = navigator.userAgent;
+  const mobileKeywords = /Mobile|Android|iPhone|iPad|iPod|Windows Phone/i;
+  return mobileKeywords.test(userAgent)
+}
   useHead({
   link:[
   {
@@ -55,4 +66,5 @@
   right: 8%;
   top: 12%;
 }
+
 </style>

@@ -793,12 +793,13 @@ a {
 }
 
 .nav_body_left {
-    width: 100%;
+    width: 50%;
 }
 
 .nav_list {
     margin-top: -0.11rem;
     margin-left: -0.2rem;
+    padding-left: 0;
 }
 
 .nav_list_item {
@@ -883,7 +884,7 @@ a {
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    /* align-items: flex-end; */
     justify-content: space-between;
     width: 50%;
     height: 100%;
@@ -970,7 +971,10 @@ a {
     overflow: hidden;
     overflow: clip;
 }
-
+.nav_search_form .nav_search_form_mask {
+    width: 50%;
+    position: relative;
+}
 .nav_search_label {
     display: block;
     width: 3.35rem;
@@ -985,6 +989,8 @@ a {
     letter-spacing: .08em;
     font-family: inherit;
     text-transform: uppercase;
+    border: none;
+    background: none;
 }
 
 .nav_search_btn {
@@ -1001,7 +1007,7 @@ a {
 }
 
 .nav_search_form_bar {
-    width: 100%;
+    width: 50%;
     height: 1px;
     background-color: #f1f2ed;
 }
@@ -1028,11 +1034,13 @@ a {
     height: 100%;
     top: 0;
     right: 0;
+    background: none;
+    border: none;
 }
 
 .search_results_main_body_btn svg {
-    width: 0.11rem;
-    height: 0.11rem;
+    width: 0.22rem;
+    height: 0.22rem;
 }
 
 .search_results_main_body_btn use {
@@ -1069,13 +1077,14 @@ a {
 
 .nav_list-social_icon {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
-    width: 1.389vw;
-    height: 1.389vw;
+    width: 1vw;
+    height: 1vw;
     padding: 0.05rem;
     line-height: 1.2;
     box-sizing: content-box;
+    padding-left: 0;
 }
 
 .nav_list-social_block svg.-fb {
@@ -1455,13 +1464,14 @@ a {
     user-select: none;
     pointer-events: none;
 }
-.codrops-links nav ul li:hover a {
+.codrops-links nav ul li:hover a, .codrops-links nav ul li.active a{
 	color: rgba(157, 41, 51);
 }
-.codrops-links nav ul li:hover a::after {
+.codrops-links nav ul li:hover a::after,.codrops-links nav ul li.active a::after{
     transform: translateX(0) scaleX(1);
     transition: transform .85s cubic-bezier(.2, .84, .49, 1);
 }
+
 .poster__box {
     top: 0;
     width: 100%;
@@ -1483,6 +1493,7 @@ a {
 }
 .poster__box ul li img {
     width: 100%;
+    background-color: #fff;
 }
 .in-pro-hover-img {
     display: none;
@@ -2032,4 +2043,100 @@ a {
 }
 #gallery figure small {
     font-size: 0.18rem;
+}
+.logo img {
+    max-width: 300px;
+    max-height: 50px;
+  }
+.send_span {
+    font-size: 14px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+/* 手机端代码 */
+@media screen and (max-width:800px) {
+    .NavClose, .nav_head_inner {
+        height: 45px;
+    }
+    
+    .nav,.nav_head_inner {
+        padding: 10px 15px 0;
+        position: relative;
+    }
+    .nav {
+        position: fixed;
+        background-color: #fff;
+        height: 45px;
+        box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.6);
+    }
+    .codrops-links nav ul li,.btn--back {
+        display: none;
+    }
+    .header_right_btn ,.NavClose{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+    .NavClose {
+        margin-right: 0;
+    }
+    .nav_scroll {
+        padding: 60px 10px 0;
+    }
+    .nav_list {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .nav_list_item {
+        padding-left: 0;
+        width: 100%;
+    }
+    .nav_body_right_link, .nav_list_link {
+        font-size: 16px;
+    }
+    #Nav.active {
+		height: 100%;
+	}
+    #Nav a {
+        width: 100%;
+        
+    }
+    .nav_list-social_block {
+        height: auto;
+    }
+    .nav_list-social {
+        width: 100%;
+    }
+    .nav_list-social_item {
+        flex: 1;
+        
+    }
+    .nav_list-social {
+        margin-left: 0;
+    }
+    .nav_foot {
+        padding-bottom: 0px;
+    }
+    .nav_list_link {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 50px;
+    }
+    .nav_search_form .nav_search_form_mask {
+        width: 100%;
+    }
+    .search_results_main_body_btn svg {
+        width: 0.35rem;
+        height: 0.35rem;
+    }
+    .nav_search_form_bar {
+        width: 100%;
+    }
+    .form__input {
+        width: 100%;
+    }
 }
