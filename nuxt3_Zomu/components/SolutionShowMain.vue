@@ -26,7 +26,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 const route = useRoute()
-const publicPath = 'http://localhost:3000'
+const publicPath = 'http://47.99.161.248:3800'
 const { data } = await useFetch( publicPath + `/web/new/getNew/${route.params.id}`, {method: 'get'})
 const time = data.value.data.data[0].createtime.split('T')[0]
 </script>

@@ -111,7 +111,7 @@
 						</div>
 						<div class='bg'></div>
 						<div class='content_centerimage'>
-							<img src='images/about-05.jpg'>
+							<img src='/images/about-05.jpg'>
 						</div>
 						<div class='content'>
 								<h2>Automatic Capsule Counting and Bottling Line </h2>

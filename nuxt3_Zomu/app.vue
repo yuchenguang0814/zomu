@@ -1,5 +1,5 @@
 <template>
-  <NuxtPage></NuxtPage>
+  <NuxtPage :keepalive="{max: 10}"></NuxtPage>
   <Footer></Footer>
 </template>
 <script setup>

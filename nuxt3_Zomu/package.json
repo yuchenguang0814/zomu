@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "video.js": "^8.6.1"
   }
 }

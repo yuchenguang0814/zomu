@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
         '/web': {
-            target: 'http://localhost:3000',
+            target: 'http://47.99.161.248:3800',
             changeOrigin: true,
             prependPath: true
         },
@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     // 该配置用于服务端请求转发
     routeRules: {
       '/apis/**': {
-        proxy: 'http://localhost:3000/'
+        proxy: 'http://47.99.161.248:3800/'
       }
     }
 },

@@ -22,6 +22,6 @@ const isHover = false;
 const toggleHover = (value) => {
 	isHover = value
 }
-const publicPath = 'http://localhost:3000'
+const publicPath = 'http://47.99.161.248:3800'
 const { data } = await useFetch( publicPath + `/web/pro/getProByname/${props.content}`, {method: 'post'})
 </script>

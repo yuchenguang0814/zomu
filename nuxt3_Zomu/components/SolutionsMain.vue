@@ -31,7 +31,7 @@
 </template>
 <script setup>
 import AboutSlide from './slidemenu/aboutSlide'
-const publicPath = 'http://localhost:3000'
+const publicPath = 'http://47.99.161.248:3800'
 const { data } = await useFetch( publicPath + `/web/new/getNew`, {method: 'get'})
 const className = 'sol'
 // const isHover = ref(false);
