@@ -6,7 +6,7 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '/admin': {
-        target: 'http://localhost:3000/',//需代理的后端接口
+        target: 'http://localhost:3800/',//需代理的后端接口
         changeOrigin: true
       }
     }

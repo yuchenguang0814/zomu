@@ -952,3 +952,16 @@
           }
     
     }
+    .p2::before{
+        border-left-color:rgba(151, 41, 51);
+        border-radius: 10px 10px 0 10px;
+        /* box-shadow:none; */
+        
+    }
+    .p2 a{
+        background: linear-gradient(90deg, rgba(151,41,51,0.8),#db4758);
+        width: 2.9rem;
+        left: -2.6rem;
+        border-radius: 10px 10px 0 10px;
+        height: 0.83rem;
+    }
