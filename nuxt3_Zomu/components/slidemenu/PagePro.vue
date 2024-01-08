@@ -37,7 +37,7 @@ const isHover = false;
 const toggleHover = (value) => {
 	isHover = value
 }
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const query = {
     id: route.params.id,
     page: route.params.page

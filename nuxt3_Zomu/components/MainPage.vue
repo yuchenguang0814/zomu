@@ -18,7 +18,7 @@ if(route.params.page) {
   pageIndex.value = route.params.page
 }
 
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const props = defineProps({
     total: { type: [Number, String], default: 4 }, // 总数 The total number of
     pageNum: { type: [Number, String], default: 1 }, // 当前页数 The current number of pages

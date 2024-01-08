@@ -18,7 +18,7 @@
 import CategorySlide from './slidemenu/categorySlide.vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 
 const { data } = await useFetch( publicPath + `/web/pro/getPro/${route.params.id}`, {method: 'get'})
 const vidHtml =  data.value.data.data[0].vidurl? ` <div
@@ -62,7 +62,7 @@ const vHtml = `
 <div class="pages o-pro">
           <div id="ipresenter">
             <div id="intro" class="step" data-x="0" data-y="0" data-thumbnail="/images/thumbnails/1.jpg">
-              <div class="pro-img-box"><img src="http://47.99.161.248:3800/${data.value.data.data[0].image}" class="pro-img" /></div>
+              <div class="pro-img-box"><img src="http://localhost:3800/${data.value.data.data[0].image}" class="pro-img" /></div>
               
               <h2>${data.value.data.data[0].name}</h2>
               <p>

@@ -2,7 +2,7 @@
   <main class="view">
 		<div class="v-content">
 			<img src="/images/img1.jpg" alt="" class="o-view-img">
-      <AboutSlide :content="2" />
+			<div class="o-nav"><div class='p2 active'><a href="/about/solutions" class="toc__item">Solutions</a></div></div>
 			<div class='pages news'>
 				<ul class="new-list">
 					<li v-for="item in data.data.data"
@@ -31,7 +31,7 @@
 </template>
 <script setup>
 import AboutSlide from './slidemenu/aboutSlide'
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const { data } = await useFetch( publicPath + `/web/new/getNew`, {method: 'get'})
 const className = 'sol'
 // const isHover = ref(false);

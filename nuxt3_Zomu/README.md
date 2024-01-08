@@ -22,7 +22,7 @@ bun install
 
 ## Development Server
 
-Start the development server on `http://47.99.161.248:3800`:
+Start the development server on `http://localhost:3800`:
 
 ```bash
 # npm

@@ -39,7 +39,7 @@
 import CategorySlide from './slidemenu/categorySlide.vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 
 const { data } = await useFetch( publicPath + `/web/pro/getPro/${route.params.id}`, {method: 'get'})
 

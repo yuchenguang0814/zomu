@@ -163,7 +163,13 @@ a {
 	z-index: 1002;
 	opacity: 0;
 	color: #1d48f3;
-    margin-right: 3em;
+    /* margin-right: 3em; */
+    position: absolute;
+    left: -30%;
+    top: 0;
+    height: 100vh;
+    width: 1rem;
+
 }
 
 .btn--menu {
@@ -1450,6 +1456,17 @@ a {
 }
 .btn--back {
 	color: #332c2b;
+    transform: scale(0)
+}
+.btn--back .icon {
+    position: absolute;
+    left: 0%;
+    top: 0;
+    width: 5em;
+    height: 5em;
+}
+.btn--back .icon use {
+    fill: #fff;
 }
 .codrops-links nav ul li a {
 	position: relative;

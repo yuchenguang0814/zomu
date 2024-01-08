@@ -33,7 +33,7 @@
 import AboutSlide from './slidemenu/aboutSlide'
 import { useRoute } from 'vue-router'
 const route = useRoute()
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const { data } = await useFetch( publicPath + `/web/new/getPageNew/${route.params.page}`, {method: 'get'})
 const className = 'sol'
 // const isHover = ref(false);

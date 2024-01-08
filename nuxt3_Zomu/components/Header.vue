@@ -27,6 +27,9 @@
 					<li :class="`${props.content == 5 ? 'active': ''}`">
 						<a href="/about">ABOUT</a>
 					</li>
+					<li :class="`${props.content == 2 ? 'active': ''}`">
+						<a href="/about/solutions">SOLUTIONS</a>
+					</li>
 					<li :class="`${props.content == 1 ? 'active': ''}`">
 						<a href="/product/all">PRODUCT</a>
 					</li>
@@ -34,7 +37,7 @@
 						<a href="/contact">CONTACT</a>
 					</li>
 					
-					<button class="btn btn--back"><svg class="icon icon--caret">
+					<button class="btn btn--back" @mouseenter="toggleHover(true)" @mouseleave="toggleHover(false)"><svg class="icon icon--caret">
 						<use xlink:href="#icon-caret"></use>
 					</svg></button>
 					<HeaderRightBtn></HeaderRightBtn>
@@ -47,8 +50,14 @@
 <script setup>
 import HeaderRightBtn from './headerbtn/headerRightBtn.vue'
 import HeaderNav from './headerbtn/headerNav.vue'
-import { defineProps } from 'vue'
+import { defineProps,ref } from 'vue'
 const props = defineProps({
   content:String
 })
+const toggleHover = (value)=> {
+  if(value) {
+		
+	}
+}
+
 </script>

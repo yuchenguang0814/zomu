@@ -10,7 +10,7 @@ const props = defineProps({
   content:String
 })
 console.log(props.isSend)
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 watch(props.isSend,async()=> {
   const { data } = await $fetch( publicPath + `/email/add`, {
     headers: {

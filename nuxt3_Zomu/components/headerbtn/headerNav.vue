@@ -66,7 +66,7 @@
 					<div class="nav_body_right">
 						<div class="nav_body_right_item">
 							<!-- 搜索 -->
-							<Search/>
+							<!-- <Search/> -->
 							<!-- 发送留言 -->
 							<Send />
 

@@ -5,12 +5,12 @@
       <Meta name="description" :content="data.data.data[0].pageDescription" />
   </Head>
       <div>
-        <Header :content="5"/>
+        <Header :content="2"/>
         <SolutionsMain />
       </div>
     </template>
 <script setup>
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const { data } = await useFetch( publicPath + `/web/Page/getPage/2`, {method: 'get'})
 useHead({
     link:[

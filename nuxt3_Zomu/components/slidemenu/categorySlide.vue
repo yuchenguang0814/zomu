@@ -11,6 +11,6 @@ import { defineProps } from 'vue'
 const props = defineProps({
   content:String
 })
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const { data } = await useFetch(publicPath + '/web/pro/getCategory', {method: 'get'})
 </script>

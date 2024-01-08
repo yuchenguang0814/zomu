@@ -26,7 +26,7 @@ const form = reactive({
   content:''
 })
 // const Date = JSON.stringify(form)
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const isSend = ref(false)
 const send = async () => {
   if(form.name == '' || form.email == ''){

@@ -6,11 +6,12 @@
   </Head>
       <div>
         <Header :content="data.data.data[0].id"/>
+        <Triangle />
         <AboutMain />
       </div>
     </template>
 <script setup>
-const publicPath = 'http://47.99.161.248:3800'
+const publicPath = 'http://localhost:3800'
 const { data } = await useFetch( publicPath + `/web/Page/getPage/5`, {method: 'get'})
   useHead({
     link:[

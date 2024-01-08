@@ -8,17 +8,18 @@
 		<nav class="tabsnav tabsnav--vertical tabsnav--ander">
 			<div class="tabsnav__item">
 				<div class="tabsnav__bar"></div>
-				<h3 class="tabsnav__title">Products</h3>
+				<h3 class="tabsnav__title" ref="tabsnav-tit">Products</h3>
 			</div>
 			<div class="tabsnav__item">
 				<div class="tabsnav__bar"></div>
-				<h3 class="tabsnav__title">Who We Are</h3>
+				<h3 class="tabsnav__title" ref="tabsnav-tit">Who We Are</h3>
 			</div>
 			<div class="tabsnav__item tabs_cont">
 				<div class="tabsnav__bar"></div>
-				<h3 class="tabsnav__title">Contact Us</h3>
+				<h3 class="tabsnav__title" ref="tabsnav-tit">Contact Us</h3>
 			</div>
 		</nav>
+		
 		<div class="tabscontent">
 			<Tabscontent01></Tabscontent01>
 			<Tabscontent02></Tabscontent02>
@@ -44,7 +45,7 @@ onMounted(() => {
     controls: true,
     sources: [
       {
-        src: "http://47.99.161.248:3800/images/pzx.mov",
+        src: "http://localhost:3800/images/pzx.mov",
         type: 'video/mp4',
       }
     ],
