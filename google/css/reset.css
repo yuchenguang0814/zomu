@@ -1,0 +1,70 @@
+/* CSS Reset */
+html {
+  box-sizing: border-box; /* 使元素的width/height属性包括padding和border */
+}
+*, *::before, *::after {
+  margin: 0; /* 清空所有元素的外边距 */
+  padding: 0; /* 清空所有元素的内边距 */
+  box-sizing: inherit; /* 继承父元素的box-sizing属性值 */
+}
+*, :after, :before {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif; /* 设置默认字体族为Arial或者无衬线字体 */
+  line-height: 1.5; /* 设置行高为1.5倍字号大小 */
+  font-size: 0.16rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; /* 取消标题标签的加粗效果 */
+}
+a {
+  text-decoration: none; /* 去除链接文本的下划线 */
+}
+ul, ol {
+  list-style: none; /* 移除列表项前面的符号 */
+}
+img {
+  max-width: 100%; /* 图片最大宽度为其容器宽度 */
+  max-height: 100%;
+  height: auto; /* 根据比例自动调整图片高度 */
+}
+button{
+  cursor: pointer; /* 将光标改变成手型 */
+  background-color: transparent; /* 按钮背景色为透明 */
+  border: none; /* 按钮没有边框 */
+  outline: none; /* 点击按钮时不会产生任何视觉反馈 */
+}
+a {
+  color: var(--color-black);
+}
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray: #9D9D9D;
+  --color-blue: #005AEB;
+  --color-light-blue: #0032FF;
+  --color-off-white: #F0F0F0;
+  --color-yellow: #FFFA4E;
+  --font-tech: "Share Tech Mono",monospace;
+  --font-ibm: "IBM Plex Mono",monospace;
+  --font-ibmJP: "IBM Plex Sans JP",sans-serif;
+  --font-coprec: coprec,monospace;
+  --font-inter: "Inter",sans-serif;
+  --color-red:rgb(157,41,51);
+}
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.h_50 {
+  height: 0.5rem;
+  line-height: 0.5rem;
+}
+.t_r {
+  text-align: right;
+}
