@@ -296,3 +296,124 @@
 }
 /* locations 结束 */
 /* contact 样式结束 */
+/* 产品详情页 */
+.product_show {
+  height: 100vh;
+}
+
+.box-right {
+  height: 100%;
+  width: 5.09rem;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 15px;
+  top: 75px;
+  background-color: var(--color-white);
+  z-index: 99;
+  border-left: 1px solid var(--color-black);
+}
+.box-right table {
+  width: 100%;
+  font-size: 0.16rem;
+  border-collapse:collapse;
+}
+.box-right table tr {
+  border-bottom: 1px solid var(--color-black);
+}
+.box-right table thead {
+  font-size: 0.18rem;
+  font-weight: 700;
+  text-align: center;
+}
+.box-right table td {
+  line-height: 0.3rem;
+  padding-left: 0.1rem;
+  border-right: 1px solid var(--color-black);
+}
+.box-right table td:nth-child(2n) {
+  border-right: 0;
+}
+
+.box-right-station table td:first-child {
+  width: 0.58rem;
+}
+.box-right-station table td:nth-child(2n) {
+  border-right: 1px solid var(--color-black);
+}
+.box-right table td:nth-child(3n) {
+  border-right: 0;
+}
+
+.box-right-top {
+  background-color: lightcoral;
+}
+.box-right-station table thead{
+  text-align: left;
+}
+.box-right-station table>tbody>tr td:first-child {
+  padding: 0;
+}
+.box-right-station table tr td:first-child span{
+  display: block;
+  text-align: center;
+  background-color: var(--color-black);
+  border-radius: 50%;
+  color: #fff;
+  width: 0.2rem;
+  height: 0.2rem;
+  line-height: 0.2rem;
+  margin: 0 auto;
+}
+.box-right-application {
+  width: 100%;
+  border-bottom: 1px solid var(--color-black);
+  padding-left: 0.05rem;
+  display: flex;
+}
+.box-right-application p {
+  font-size: 0.16rem;
+  margin-left: 0.05rem;
+}
+.box-right-application strong {
+  font-size: 0.18rem;
+  font-weight: 700;
+}
+.box-right-application img {
+  width: 100%;
+  height: auto;
+}
+.box-right-bottom {
+  flex: 1;
+  font-size: 0.16rem;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 1.5rem; */
+}
+.box-right-parameter thead tr:first-child td{
+  border: none;
+}
+.title {
+  padding-left: 0.1rem;
+}
+.title span,.tit-con span{
+  font-size: 0.12rem;
+}
+.title p {
+  font-size: 0.2rem;
+  font-weight: 700;
+}
+.tit-con {
+  /* display: flex; */
+  display: none;
+  border-bottom: 1px solid var(--color-black);
+}
+.tit-con>div {
+  flex: 1;
+  padding-left: 0.1rem;
+  border-left: 1px solid var(--color-black);
+}
+/* 产品详情页结束 */

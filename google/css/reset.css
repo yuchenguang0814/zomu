@@ -68,3 +68,47 @@ body::-webkit-scrollbar {
 .t_r {
   text-align: right;
 }
+.roundDot::before {
+  content: "";
+  display: block;
+  width: 0.1rem;
+  height: 0.1rem;
+  border-radius: 50%;
+  background: var(--color-black);
+  position: absolute;
+  top: 50%;
+  left: 0.1rem;
+  transform: translateY(-50%);
+  transition: all 0.3s ease 0s;
+  opacity: 0;
+}
+.r_line::before,.l_line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  background-color: var(--color-black);
+  width: 1px;
+  height: 100%;
+  display: block;
+  /* transition: all 0.6s linear; */
+}
+.r_line::before {
+  left: unset;
+  right: 0;
+}
+.t_line::after,.b_line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 1px;
+  display: block;
+  /* transition: all 0.6s linear; */
+}
+.b_line::after {
+  top: unset;
+  bottom: 0px;
+}
