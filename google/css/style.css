@@ -526,7 +526,7 @@ input:hover {
   display: flex;
   border-right: 1px solid var(--color-black);
   box-sizing: border-box;
-  padding-left: 0.23rem;
+  padding-left: 0.15rem;
   justify-content: space-between;
 }
 .footer_left a {
@@ -589,7 +589,8 @@ main {
   align-items: stretch;
   text-align: center;
   position: relative;
-  z-index: 101;
+  z-index: 999;
+  border: 1px solid var(--color-black);
 }
 .m_foot_item {
   border-right: 1px solid var(--color-black);
@@ -625,12 +626,12 @@ main {
 }
 .reser {
   padding-right: 0.23rem;
-  border-bottom: 1px solid var(--color-white);
   background-color: var(--color-black);
   color: var(--color-white);
   cursor: url("../images/cross-cursor-white.svg") 16 16, auto;
   position: relative;
-  z-index: 101;
+  z-index: 999;
+  font-size: 0.12rem;
 } 
 .subscribe .form-input {
   position: relative;
@@ -798,13 +799,16 @@ main {
 .in_product.fixed h2::before {
   opacity: 1;
 }
+.in_pro_left {
+  width: 30%;
+}
 .in_pro_list {
   margin-top: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  width: 100%;
+  width: 70%;
 }
 .in_pro_list li {
   width: 50%;
@@ -853,12 +857,18 @@ main {
   overflow: hidden;
   position: relative;
   z-index:12;
+  background-color: var(--color-white);
+}
+.in_pro_item_img p {
+  padding: 0.1rem;
 }
 .in_pro_item_img img {
   vertical-align: middle;
   width: 100%;
   height: auto;
   max-height: none;
+  display: block;
+  border-bottom: 1px solid var(--color-black);
 }
 .in_pro_item_cont {
   flex-grow: 1;
@@ -913,6 +923,10 @@ main {
 .in_pro_item_cont p:last-child {
   border-bottom: 1px solid var(--color-black);
   padding-left: 0;
+  max-height: 0.6rem;
+}
+.in_pro_item_cont .form-btn span {
+  margin-left: 0.4rem;
 }
 .in_pro_item_cont p.active::before,.in_pro_item_cont p:hover::before{
   opacity: 1;
@@ -928,6 +942,9 @@ main {
   height: 0.2rem;
   z-index: 13;
   border-top: 1px solid var(--color-black);
+}
+.demo:nth-child(2n) .h_20 {
+  left: 0.23rem;
 }
 .demo .h_20::before {
   content: '';
