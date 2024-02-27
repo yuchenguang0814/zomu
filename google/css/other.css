@@ -1,4 +1,7 @@
 /* contact 样式 */
+main {
+  height: 100%;
+}
 .contact {
   height: 100%;
 }
@@ -299,7 +302,7 @@
 /* 产品详情页 */
 .product_show {
   display: flex;
-  height: 8.1rem;
+  height: 100%;
 }
 .product_left{
   width: 50%;
@@ -309,6 +312,10 @@
 }
 .product_center {
   width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 .product_right {
   width: 25%;
@@ -318,12 +325,13 @@
   flex-direction: column;
 }
 .product_center .product_center_top {
-  height: 50%;
-  border-bottom: 1px solid var(--color-black);
-  background-color: var(--color-black);
+  width: 100%;
 }
 .product_center_bottom {
+  flex-grow: 1;
   padding: 0.22rem;
+  display: flex;
+  align-items: center;
 }
 .product_center_bottom img {
   width: 100%;
@@ -461,8 +469,8 @@
 }
 .product_right_bottom_fixed {
   position: fixed;
-  bottom: 55px;
-  right: 7px;
+  bottom: 45px;
+  right: 0.07rem;
   width: 25%;
   z-index: 899;
   background-color: var(--color-white);
@@ -524,19 +532,219 @@ text-overflow: ellipsis;
   width: 100%;  
 }
 
-.porduct_related .product_show_img::after {
+.porduct_related a::after {
   content: 'More';
   position: absolute;
-  right: -18px;
-  bottom: 0;
+  right: 0;
+  top: 2.5rem;
+  transform: translateY(-100%);
   padding: 0.05rem 0.1rem;
   border-left: 1px solid var(--color-black);
   border-top: 1px solid var(--color-black);
   font-size: 0.12rem;
   transition: all 0.3s ease;
 }
-.porduct_related .product_show_img:hover::after {
+.porduct_related a:hover::after {
   color: var(--color-white);
   background-color: var(--color-black);
 }
 /* 相关产品结束 */
+/* products */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+.products_nav {
+  display: flex;
+  padding: 0 5%;
+  width: 100%;
+  margin-top: 0.6rem;
+}
+.products_nav li {
+  width: 25%;
+  height: 0.6rem;
+  text-align: center;
+  font-size: 0.16rem;
+  border: 1px solid var(--color-black);
+  position: relative;
+}
+.products_nav li:not(:last-child) {
+  border-right: 0;
+}
+.products_nav li a {
+  width: 100%;
+  height: 0.6rem;
+  font-size: 0.16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.products_nav li::before {
+  content: '';
+  width: 100%;
+  height: 0;
+  background-color: var(--color-red);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: var(--animation-primary);
+}
+.products_nav li.active::before,.products_nav li:hover::before {
+  opacity: 1;
+  width: 100%;
+  height: 0.05rem;
+}
+.products_list {
+  width: 100%;
+  padding: 0 5%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+.products_list li {
+  margin-right: 0.4rem;
+  width: calc(25% - 0.3rem);
+  border: 1px solid var(--color-black);
+  margin-bottom: 0.4rem;
+}
+.products_list_img {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+.products_list li:nth-child(4n) {
+  margin-right: 0;
+}
+.products_list_title {
+  padding: 0.1rem;
+  position: relative;
+  text-align: center;
+}
+.products_list_title .link_thumb_icon {
+  position: absolute;
+  right: 0.1rem;
+  top: 50%;
+}
+.products_list_title .link_thumb_icon span {
+background-color: var(--color-black);
+}
+.products_list_title .animate_arrow span:nth-child(2) {
+  width: 30px;
+  left: 30px;
+}
+.products_list li:hover .products_list_title .animate_arrow span:nth-child(1) {
+  animation: 1s linear 0s infinite normal none running spanShort;
+}
+.products_list li:hover .products_list_title .animate_arrow span:nth-child(2) {
+  animation: 1s linear 0s infinite normal none running spanLong;
+}
+.products_banner {
+  padding-bottom: 24%;
+  width: 100%;
+  background: url(../images/products-banner.jpg) no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.products_bannner_innner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.products_bannner_title {
+  color: #fff;
+  font-size: 0.46rem;
+  text-align: center;
+  letter-spacing: .1em;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.products_bannner_label {
+  font-size: 0.15rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 0.16rem;
+}
+/* products 结束 */
+/* packaging */
+.packaging_list {
+  display: flex;
+  margin-top: 0.6rem;
+  width: 100%;
+  padding: 0 5%;
+  margin-bottom: 0.6rem;
+}
+.packaging_list li {
+  width: 33.33%;
+  margin-right: 0.05rem;
+  position: relative;
+  overflow: hidden;
+}
+.packaging_list li:last-child {
+  margin-right: 0;
+}
+.packaging_list_inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  color: var(--color-white);
+  padding: 0 0.45rem;
+  background-color: rgba(0,43,77,.5);
+}
+.packaging_list_inner_tit {
+  font-size: 0.24rem;
+}
+.packaging_list_inner_desc {
+  margin: 0.2rem 0 0.35rem;
+}
+.packaging_list_img img {
+  vertical-align: bottom;
+  -webkit-transition: -webkit-transform .6s ease;
+  transition: -webkit-transform .6s ease;
+  transition: transform .6s ease;
+  transition: transform .6s ease,-webkit-transform .6s ease;
+}
+.packaging_list_inner .link_thumb_icon {
+  margin: 0.3rem auto;
+}
+.packaging_list li:hover .packaging_list_inner .link_thumb_icon span:nth-child(1) {
+  animation: 1s linear 0s infinite normal none running spanShort;
+}
+.packaging_list li:hover .packaging_list_inner .link_thumb_icon span:nth-child(2) {
+  animation: 1s linear 0s infinite normal none running spanLong;
+}
+.packaging_list li:hover .packaging_list_img img {
+  -webkit-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  transform: scale(1.15);
+}
+/* packaging 结束 */

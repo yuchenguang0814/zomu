@@ -39,6 +39,7 @@ a {
   color: var(--color-black);
 }
 :root {
+  --color-light-rgb: 0, 0, 0;
   --color-white: #fff;
   --color-black: #000;
   --color-gray: #9D9D9D;
@@ -52,6 +53,7 @@ a {
   --font-coprec: coprec,monospace;
   --font-inter: "Inter",sans-serif;
   --color-red:rgb(157,41,51);
+  --animation-primary: 0.4s cubic-bezier(.85, 0, .15, 1);
 }
 .container {
   max-width: 90%;
