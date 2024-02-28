@@ -625,7 +625,7 @@ text-overflow: ellipsis;
 }
 .products_list_title .link_thumb_icon {
   position: absolute;
-  right: 0.1rem;
+  right: 0.3rem;
   top: 50%;
 }
 .products_list_title .link_thumb_icon span {
@@ -642,7 +642,7 @@ background-color: var(--color-black);
   animation: 1s linear 0s infinite normal none running spanLong;
 }
 .products_banner {
-  padding-bottom: 24%;
+  padding-bottom: 15%;
   width: 100%;
   background: url(../images/products-banner.jpg) no-repeat;
   background-size: cover;
