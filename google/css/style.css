@@ -450,9 +450,6 @@ input:hover {
   transition: all 0.3s ease 0s;
   opacity: 0;
 }
-.layout__FrameWrapper header nav > ul > li:first-child{
-  min-width: 2.3rem;
-}
 .layout__FrameWrapper header nav > ul > li > a::before {
   left: 15%;
 }
@@ -464,47 +461,6 @@ input:hover {
 .layout__FrameWrapper header nav > ul > li:hover > a::before {
   opacity: 1;
 }
-/* .layout__FrameWrapper header nav > ul > li.switch {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  max-width: 1rem;
-}
-.switch .switch_top {
-  height: 50%;
-  width: 100%;
-  border-bottom: 1px solid var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 0.1rem;
-}
-.switch .iconfont {
-  color: var(--color-black);
-  font-size: 0.16rem;
-}
-.switch .icon-moon {
-  opacity: 0.25;
-}
-.switc_slider {
-  flex-grow: 1;
-  height: 50%;
-  width: 100%;
-  background-color: var(--color-gray);
-  border-bottom: 1px solid var(--color-black);
-  cursor: url("../images/hover-cursor-black.svg") 16 16, auto;
-}
-.slider {
-  width: 50%;
-  height: 100%;
-  background-color: var(--color-white);
-  box-shadow: rgba(0, 0, 0, 0.2) -3px -2px 3px inset;
-  transition: all 0.3s ease 0s;
-}
-.switc_slider:hover .slider {
-  transform: translateX(20%);
-} */
-
 
 /* layout header 结束 */
 /* layout footer */
@@ -601,7 +557,7 @@ input:hover {
 /* search 结束 */
 .footer_right p {
   width: 100%;
-  font-size: 0.14rem;
+  font-size: 14px;
   height: 30px;
   line-height: 30px;
   text-align: right;
@@ -642,6 +598,9 @@ input:hover {
 
 .footer_left_switch .selector-name .selector-text.light {
   transform: translateY(0%) rotate(0.001deg);
+}
+.footer_left_switch .selector-name .selector-text.light h6{
+  font-size: 14px;
 }
 
 .footer_left_switch .selector-name .selector-text.dark {

@@ -55,6 +55,12 @@ a {
   --color-red:rgb(157,41,51);
   --animation-primary: 0.4s cubic-bezier(.85, 0, .15, 1);
 }
+.animate_arrow._block span {
+  background-color: var(--color-black);
+}
+.p_ab {
+  position: absolute;
+}
 .container {
   max-width: 90%;
   margin: 0 auto;
