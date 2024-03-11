@@ -1,7 +1,7 @@
 /* contact 样式 */
-main {
+/* main {
   height: 100%;
-}
+} */
 .contact {
   height: 100%;
 }
@@ -868,14 +868,12 @@ background-color: var(--color-black);
 }
 /* products_list 页面样式 结束 */
 /* download start */
-.download{
-  height: 100%;
-}
 .download_first {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 110px);
   justify-content: space-between;
+  
 }
 .download_first_top {
   display: flex;
@@ -937,5 +935,48 @@ background-color: var(--color-black);
   border: 1px solid var(--color-black);
   font-size: 16px;
   box-sizing: border-box;
+}
+.download_second {
+  padding: 0.6rem 0.23rem;
+  border-top: 1px solid var(--color-black);
+}
+.download_second h3 {
+  font-size: 0.4rem;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.download_second_list {
+  display: grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-column-gap: 0.2rem;
+  grid-row-gap: 0.6rem;
+}
+.download_second_list li {
+  border: 1px solid var(--color-black);
+  height: auto;
+  justify-content: space-between;
+  padding: 0.7rem 0.15rem 0.15rem;
+   row-gap: 20px; 
+  position: relative;
+}
+.download_second_list li h4 {
+  margin: 0;
+  font-size: 0.24rem;
+}
+.download_second_list li a:hover {
+  text-decoration:underline;
+}
+.download_second_list li img {
+border-radius: 5px;
+}
+.download_second_list li span {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.16rem;
+    padding: 0.06rem 0.1rem;
+    text-transform: capitalize;
 }
 /* download end */
