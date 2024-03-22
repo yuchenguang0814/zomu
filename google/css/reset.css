@@ -47,12 +47,14 @@ a {
   --color-light-blue: #0032FF;
   --color-off-white: #F0F0F0;
   --color-yellow: #FFFA4E;
+  --color-bg:#e6e6dc;
   --font-tech: "Share Tech Mono",monospace;
   --font-ibm: "IBM Plex Mono",monospace;
   --font-ibmJP: "IBM Plex Sans JP",sans-serif;
   --font-coprec: coprec,monospace;
   --font-inter: "Inter",sans-serif;
   --color-red:rgb(157,41,51);
+  --transition: all .3s linear;
   --animation-primary: 0.4s cubic-bezier(.85, 0, .15, 1);
 }
 .animate_arrow._block span {

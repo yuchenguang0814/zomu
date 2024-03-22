@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>.container {  
+    position: relative; /* 或 absolute/fixed，取决于你的布局 */  
+    overflow-x: auto; /* 允许水平滚动 */  
+    white-space: nowrap; /* 防止元素换行 */  
+}  
+  
+.element {  
+    position: relative; /* 或 absolute，取决于你的布局 */  
+    display: inline-block; /* 使元素并排显示 */  
+    transition: transform 0.5s ease; /* 设置过渡效果 */  
+    transform: translateX(100%); /* 初始状态，元素在右侧之外 */  
+}  
+  
+/* 当容器滚动时，添加这个类来移动元素 */  
+.element.show {  
+    transform: translateX(0); /* 元素完全显示 */  
+}</style>
+</head>
+<body>
+  <div class="container">  
+    <div class="element">我是动画元素</div>  
+    <!-- 可以添加更多元素 -->  
+</div>
+</body>
+<script>
+  const container = document.querySelector('.container');  
+const elements = document.querySelectorAll('.element');  
+  
+container.addEventListener('scroll', function() {  
+    const scrollLeft = this.scrollLeft; // 获取容器当前的滚动位置  
+    elements.forEach(function(element) {  
+        const elementOffset = element.offsetLeft; // 获取元素相对于容器的位置  
+        const elementWidth = element.offsetWidth; // 获取元素的宽度  
+          
+        // 判断元素是否应该在视口中显示  
+        if (scrollLeft > elementOffset - elementWidth) {  
+            element.classList.add('show'); // 添加 .show 类以显示元素  
+        } else {  
+            element.classList.remove('show'); // 移除 .show 类以隐藏元素（如果需要的话）  
+        }  
+    });  
+});
+</script>
+</html>
